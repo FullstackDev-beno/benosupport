@@ -1,6 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import { HeroSection } from "@/components/hero-section"
-import { ServicePillars } from "@/components/service-pillars"
+
 import { WhyChoose } from "@/components/why-choose"
 import { ProcessSection } from "@/components/process-section"
 import { TechStack } from "@/components/tech-stack"
@@ -11,6 +11,7 @@ import { InsightsSection } from "@/components/insights-section"
 import { FaqSection } from "@/components/faq-section"
 import { CtaSection } from "@/components/cta-section"
 import { SiteFooter } from "@/components/site-footer"
+import ServicePillars from "@/components/service-pillars"
 
 export default function Page() {
   return (

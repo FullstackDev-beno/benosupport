@@ -419,6 +419,8 @@ export default function ContactUsPage() {
                           <option>Cloud & Platform</option>
                           <option>Cyber Resilience</option>
                           <option>Digital Product</option>
+                          <option>IT Governance</option>
+                          <option>Workforce Tech</option>
                         </select>
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6a86a8] pointer-events-none">
                           <ChevronDown />

@@ -8,18 +8,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 const leaders = [
-  {
-    name: "Pawan Sengar",
-    role: "Group CEO",
-    img: "/assets/ceo.svg",
-    bio: "Pawan leads Beno Support's global strategy, engineering vision, and enterprise partnerships. With deep expertise in AI, cloud, and digital transformation, he drives innovation across industries.",
-  },
-  {
-    name: "Abhinesh Pratap Singh",
+   {
+    name: "Abinesh Pratap Singh",
     role: "Managing Director",
     img: "/assets/md.svg",
-    bio: "Abhinesh oversees operations, delivery excellence, and client success. His leadership spans enterprise software programs, P&L management, and building high-performance global delivery teams.",
+    bio: "Abinesh Pratap Singh drives operational leadership, delivery excellence, and technology consulting initiatives across AI, cloud engineering, software development, and enterprise modernization services.",
   },
+  {
+    name: "Pavan Sengar",
+    role: "Group CEO",
+    img: "/assets/ceo.svg",
+    bio: "Pavan Sengar leads Beno Support’s long-term vision, business strategy, and enterprise transformation initiatives with a focus on innovation, scalable growth, and engineering excellence.",
+  },
+ 
 ]
 
 export default function LeadershipTeam() {
@@ -77,7 +78,7 @@ export default function LeadershipTeam() {
      `}
     >
       {/* Image */}
-      <div className="relative h-[180px] w-[180px] shrink-0 overflow-hidden rounded-xl">
+      <div className="relative h-[220px] w-[200px] shrink-0 overflow-hidden rounded-xl">
         <Image
           src={l.img}
           alt={l.name}

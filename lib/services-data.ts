@@ -62,10 +62,11 @@ export type ServiceData = {
   }[]
 }
 
-export const servicesData: Record<string, ServiceData> = {
+export const servicesData: Record<string, ServiceData> = 
+{
   "core-engineering-application-architecture": {
     meta: {
-      title: "Custom Software Development & SaaS Engineering Services ",
+      title: "Core Engineering & Application Architecture",
       description:
         "Beno Support delivers scalable custom software development, SaaS engineering, API architecture, and microservices solutions for startups, SMBs, and enterprises.",
       canonicalUrl: "/services/software-development-company/",
@@ -346,7 +347,7 @@ export const servicesData: Record<string, ServiceData> = {
 
   "cyber-resilience-threat-intelligence": {
     meta: {
-      title: "Cybersecurity Services & Threat Intelligence Solutions",
+      title: "Cyber Resilience & Threat Intelligence",
       description:
         "Protect digital infrastructure with cybersecurity consulting, SOC services, threat intelligence, compliance frameworks, and AI security solutions.",
       canonicalUrl: "/services/cybersecurity-services/",
@@ -854,7 +855,7 @@ export const servicesData: Record<string, ServiceData> = {
 
   "digital-products-experience-engineering": {
     meta: {
-      title: "Digital Products & Experience Engineering | Beno Support",
+      title: "Digital Products & Experience Engineering",
       description:
         "Beno Support designs and engineers digital products with world-class UX, high-performance frontends, and conversion-optimised experiences that drive business growth.",
     },
@@ -1041,7 +1042,7 @@ export const servicesData: Record<string, ServiceData> = {
 
   "enterprise-startup-tech-strategy": {
     meta: {
-      title: "Digital Transformation & Enterprise Technology Consulting ",
+      title: "Enterprise & Startup Tech Strategy ",
       description:
         "Modernize infrastructure, optimize technology ecosystems, and accelerate digital transformation with Beno Support's consulting services.",
       canonicalUrl: "/services/enterprise-tech-strategy-consulting/",

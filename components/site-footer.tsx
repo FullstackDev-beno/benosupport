@@ -29,6 +29,7 @@ const columns = [
   },
 ]
 
+
 export function SiteFooter() {
   return (
     <footer className="bg-[#072448] text-primary-foreground">

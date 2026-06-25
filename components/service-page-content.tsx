@@ -122,7 +122,7 @@ function ServiceIntro({ intro }: { intro: ServiceData["intro"] }) {
 function ServiceCapabilitiesGrid({
   data,
   id,
-  moreLabel = "Explore More Services",
+  moreLabel = "Explore More",
 }: {
   data: { sectionLabel: string; title: string; subtitle: string; cards: CapabilityCard[] }
   id: string
@@ -756,7 +756,7 @@ function ServiceCTASection({ cta }: { cta: NonNullable<ServiceData["cta"]> }) {
 function CTAFallbackSection() {
   return (
     <section className="bg-[#072348] py-20 lg:py-24 m-20 rounded-sm">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
           Speak with our team and turn ambiguous goals into a concrete roadmap.
         </h2>
@@ -837,11 +837,11 @@ function ServiceFAQSection({ faq }: { faq: NonNullable<ServiceData["faq"]> }) {
 export function ServicePageContent({ service, slug }: { service: ServiceData; slug: string }) {
   return (
     <div>
-      <ServiceHero hero={service.hero} />
+      <ServiceHero hero={service.hero} slug={slug} />
       <ServiceIntro intro={service.intro} />
       <ServiceCapabilitiesGrid  data={service.capabilities} id="capabilities" moreLabel="Explore More Services" />
       <IndustriesGrid />
-      <ServiceUseCases useCases={service.useCases} />
+      {/* <ServiceUseCases useCases={service.useCases} /> */}
       <ServiceCapabilitiesGrid data={service.scale} id="scale" />
       {service.cta ? <ServiceCTASection cta={service.cta} /> : <CTAFallbackSection />}
       {service.faq && <ServiceFAQSection faq={service.faq} />}

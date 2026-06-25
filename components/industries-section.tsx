@@ -37,7 +37,7 @@ export function IndustriesSection() {
             Industries We Serve
           </span>
           <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-            Industry-Focused Technology Solutions
+            Industries We Empower Through Technology
           </h2>
           <p className="mt-3 max-w-2xl text-pretty leading-relaxed text-secondary">
             We help startups, SMBs, and enterprises modernize operations,

@@ -72,28 +72,11 @@ export default function Hero(heroRef: React.RefObject<HTMLElement>, h1Ref: React
               backgroundSize: "22px 22px",
             }}
           />
-          {/* Gradient fade on left edge */}
-          <div
-            className="absolute inset-y-0 left-0 w-32 z-10"
-            style={{ background: "linear-gradient(to right, #072448, transparent)" }}
+          <img
+            src="/assets/contact/heroimg.png"
+            alt="Contact Hero"
+            className="absolute inset-0 h-full w-full object-cover"
           />
-          {/* Placeholder for customer service image */}
-          <div className="absolute inset-0 flex items-end justify-center overflow-hidden">
-            <div
-              className="w-full h-full bg-center bg-cover"
-              style={{
-                backgroundImage: "url('/contact-hero.png')",
-                backgroundPosition: "center top",
-              }}
-            />
-            {/* Overlay for image absent state */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-              <div className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center">
-                <PhoneIcon />
-              </div>
-              <p className="text-white/40 text-sm">Customer Support Image</p>
-            </div>
-          </div>
         </div>
 
         {/* Social sidebar */}

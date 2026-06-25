@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import type { ServiceData } from "@/lib/services-data"
 
-function ServiceHero({ hero }: { hero: ServiceData["hero"] }) {
+function ServiceHero({ hero ,slug}: { hero: ServiceData["hero"]; slug: string }) {
   const heroRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -39,12 +39,12 @@ function ServiceHero({ hero }: { hero: ServiceData["hero"] }) {
         />
 
         {/* label chip */}
-        {/* <span
+        <span
           className="sh-chip mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-[#3b67ff]/40 bg-[#3b67ff]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#7fa8e8] opacity-0"
         >
           <span className="size-1.5 rounded-full bg-[#0A3A73]" />
-          Our Services
-        </span> */}
+           Services / {slug}
+        </span>
 
         {/* headline */}
         <h1

@@ -3,15 +3,32 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { gsap } from "@/lib/gsap"
-import { Menu, X, ChevronDown, Globe } from "lucide-react"
+import { Menu, X, ChevronDown, Globe, PenLine, BookOpenCheck } from "lucide-react"
 import { servicesData } from "@/lib/services-data"
 import { useRouter } from "next/navigation"
 
+import { usePathname } from "next/navigation"
+
 // ── Nav links ──────────────────────────────────────────────────────────────
 const navLinks = [
-  { label: "Industries",   href: "/industries" },
-  { label: "Company",      href: "/company" },
-  { label: "Case Studies", href: "/caseStudy" },
+  { label: "Industries", href: "/industries" },
+  { label: "Company",    href: "/company" },
+]
+
+// ── Resources dropdown items ───────────────────────────────────────────────
+const resourceItems = [
+  {
+    label: "Blogs",
+    href: "/blogs",
+    icon: PenLine,
+    description: "Insights and trends shaping customer experience.",
+  },
+  {
+    label: "Case Studies",
+    href: "/caseStudy",
+    icon: BookOpenCheck,
+    description: "Real-world success stories showcasing CX impact.",
+  },
 ]
 
 // ── Services from data ─────────────────────────────────────────────────────
@@ -32,20 +49,31 @@ const LANGUAGES = [
 ]
 
 export function SiteHeader() {
-  const [isScrolled,     setIsScrolled]     = useState(false)
-  const [isMobileOpen,   setIsMobileOpen]   = useState(false)
-  const [isServicesOpen, setIsServicesOpen] = useState(false)
-  const [isLangOpen,     setIsLangOpen]     = useState(false)
-  const [activeLang,     setActiveLang]     = useState("EN")
+  const [isScrolled,       setIsScrolled]       = useState(false)
+  const [isMobileOpen,     setIsMobileOpen]     = useState(false)
+  const [isServicesOpen,   setIsServicesOpen]   = useState(false)
+  const [isResourcesOpen,  setIsResourcesOpen]  = useState(false)
+  const [isLangOpen,       setIsLangOpen]       = useState(false)
+  const [activeLang,       setActiveLang]       = useState("EN")
+  // mobile accordions
+  const [mobileServices,   setMobileServices]   = useState(false)
+  const [mobileResources,  setMobileResources]  = useState(false)
 
-  const dropdownRef = useRef<HTMLDivElement>(null)
-  const chevronRef  = useRef<SVGSVGElement>(null)
-  const itemRefs    = useRef<HTMLAnchorElement[]>([])
-  const isOpenRef   = useRef(false)
-  const logoRef     = useRef<HTMLDivElement>(null)
-  const langRef     = useRef<HTMLDivElement>(null)
+  const svcDropdownRef  = useRef<HTMLDivElement>(null)
+  const svcChevronRef   = useRef<SVGSVGElement>(null)
+  const svcItemRefs     = useRef<HTMLAnchorElement[]>([])
+  const svcIsOpenRef    = useRef(false)
 
-  const router = useRouter()
+  const resDropdownRef  = useRef<HTMLDivElement>(null)
+  const resChevronRef   = useRef<SVGSVGElement>(null)
+  const resItemRefs     = useRef<HTMLAnchorElement[]>([])
+  const resIsOpenRef    = useRef(false)
+
+  const logoRef  = useRef<HTMLDivElement>(null)
+  const langRef  = useRef<HTMLDivElement>(null)
+  const router   = useRouter()
+
+  const pathname = usePathname()
 
   // ── Scroll detection ──────────────────────────────────────────────────────
   useEffect(() => {
@@ -66,13 +94,13 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  // ── Body lock on mobile menu ──────────────────────────────────────────────
+  // ── Body lock on mobile ───────────────────────────────────────────────────
   useEffect(() => {
     document.body.style.overflow = isMobileOpen ? "hidden" : ""
     return () => { document.body.style.overflow = "" }
   }, [isMobileOpen])
 
-  // ── Close lang dropdown on outside click ─────────────────────────────────
+  // ── Close lang on outside click ───────────────────────────────────────────
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(e.target as Node))
@@ -82,7 +110,7 @@ export function SiteHeader() {
     return () => document.removeEventListener("mousedown", handler)
   }, [])
 
-  // ── Google Translate initialiser ──────────────────────────────────────────
+  // ── Google Translate ──────────────────────────────────────────────────────
   useEffect(() => {
     if (!document.getElementById("gt-script")) {
       ;(window as any).googleTranslateElementInit = () => {
@@ -109,32 +137,42 @@ export function SiteHeader() {
     }
   }
 
-  // ── Mega menu open ────────────────────────────────────────────────────────
-  const openDropdown = () => {
+  // ── Generic dropdown helpers ──────────────────────────────────────────────
+  const openDrop = (
+    isOpenRef: React.MutableRefObject<boolean>,
+    dropRef: React.RefObject<HTMLDivElement>,
+    chevRef: React.RefObject<SVGSVGElement>,
+    items: HTMLAnchorElement[],
+    setter: (v: boolean) => void
+  ) => {
     if (isOpenRef.current) return
     isOpenRef.current = true
-    setIsServicesOpen(true)
-    const el = dropdownRef.current
+    setter(true)
+    const el = dropRef.current
     if (!el) return
     el.style.pointerEvents = "auto"
     gsap.killTweensOf(el)
     gsap.set(el, { display: "block", opacity: 0, y: -14 })
     gsap.to(el, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" })
     gsap.fromTo(
-      itemRefs.current.filter(Boolean),
+      items.filter(Boolean),
       { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, stagger: 0.045, duration: 0.38, ease: "power3.out", delay: 0.04 }
+      { opacity: 1, y: 0, stagger: 0.055, duration: 0.38, ease: "power3.out", delay: 0.04 }
     )
-    if (chevronRef.current)
-      gsap.to(chevronRef.current, { rotation: 180, duration: 0.28, ease: "power2.out" })
+    if (chevRef.current)
+      gsap.to(chevRef.current, { rotation: 180, duration: 0.28, ease: "power2.out" })
   }
 
-  // ── Mega menu close ───────────────────────────────────────────────────────
-  const closeDropdown = () => {
+  const closeDrop = (
+    isOpenRef: React.MutableRefObject<boolean>,
+    dropRef: React.RefObject<HTMLDivElement>,
+    chevRef: React.RefObject<SVGSVGElement>,
+    setter: (v: boolean) => void
+  ) => {
     if (!isOpenRef.current) return
     isOpenRef.current = false
-    setIsServicesOpen(false)
-    const el = dropdownRef.current
+    setter(false)
+    const el = dropRef.current
     if (!el) return
     el.style.pointerEvents = "none"
     gsap.killTweensOf(el)
@@ -142,20 +180,43 @@ export function SiteHeader() {
       opacity: 0, y: -10, duration: 0.22, ease: "power2.inOut",
       onComplete: () => gsap.set(el, { display: "none" }),
     })
-    if (chevronRef.current)
-      gsap.to(chevronRef.current, { rotation: 0, duration: 0.22, ease: "power2.out" })
+    if (chevRef.current)
+      gsap.to(chevRef.current, { rotation: 0, duration: 0.22, ease: "power2.out" })
   }
 
-  // ── Helpers ───────────────────────────────────────────────────────────────
+  // bound helpers for Services
+  const openSvc  = () => openDrop(svcIsOpenRef, svcDropdownRef, svcChevronRef, svcItemRefs.current, setIsServicesOpen)
+  const closeSvc = () => closeDrop(svcIsOpenRef, svcDropdownRef, svcChevronRef, setIsServicesOpen)
+
+  // bound helpers for Resources
+  const openRes  = () => openDrop(resIsOpenRef, resDropdownRef, resChevronRef, resItemRefs.current, setIsResourcesOpen)
+  const closeRes = () => closeDrop(resIsOpenRef, resDropdownRef, resChevronRef, setIsResourcesOpen)
+
+  // ── Style helpers ─────────────────────────────────────────────────────────
   const textCls      = isScrolled ? "text-[#0d1e3c]" : "text-white/90"
   const hoverCls     = isScrolled ? "hover:text-[#3b67ff]" : "hover:text-white"
-  const activeSvcCls = isServicesOpen
-    ? (isScrolled ? "text-[#3b67ff]" : "text-white")
+
+  console.log("pathname", pathname.startsWith("/services"))
+  const activeSvcCls =
+  pathname.startsWith("/services") || isServicesOpen
+    ? "text-[#3b67ff]"
     : `${textCls} ${hoverCls}`
+ const activeResCls =
+  pathname.startsWith("/blogs") ||
+  pathname.startsWith("/caseStudy") ||
+  isResourcesOpen
+    ? "text-[#3b67ff] font-semibold"
+    : `${textCls} ${hoverCls}`
+
+
+    const isActive = (href: string) => {
+  if (href === "/") return pathname === "/"
+
+  return pathname.startsWith(href)
+}
 
   return (
     <>
-      {/* Hidden Google Translate widget */}
       <div id="google_translate_element" className="hidden" />
 
       <header
@@ -166,7 +227,8 @@ export function SiteHeader() {
         }`}
         onMouseLeave={() =>
           setTimeout(() => {
-            if (!dropdownRef.current?.matches(":hover")) closeDropdown()
+            if (!svcDropdownRef.current?.matches(":hover")) closeSvc()
+            if (!resDropdownRef.current?.matches(":hover")) closeRes()
           }, 80)
         }
       >
@@ -190,23 +252,27 @@ export function SiteHeader() {
 
             {/* ── Desktop Nav ───────────────────────────────────────────── */}
             <div className="hidden lg:flex items-center gap-8 xl:gap-10 flex-1 justify-center">
-                 <Link
-                  key="home"
-                  href="/"
-                  className={`text-[15px] font-medium transition-colors duration-200 ${textCls} ${hoverCls}`}
-                >
-                  Home
-                </Link>
+
+              <Link
+                href="/"
+    className={`text-[15px] font-medium transition-colors duration-200 ${
+  isActive("/")
+    ? "text-[#3b67ff]"
+    : `${textCls} ${hoverCls}`
+}`}              >
+                Home
+              </Link>
+
               {/* Services trigger */}
               <button
                 type="button"
-                onMouseEnter={openDropdown}
-                onClick={() => (isOpenRef.current ? closeDropdown() : openDropdown())}
+                onMouseEnter={openSvc}
+                onClick={() => (svcIsOpenRef.current ? closeSvc() : openSvc())}
                 className={`flex items-center gap-1 text-[15px] font-medium transition-colors duration-200 ${activeSvcCls}`}
               >
                 Services
                 <ChevronDown
-                  ref={chevronRef}
+                  ref={svcChevronRef}
                   className="w-4 h-4"
                   style={{ transformOrigin: "50% 50%" }}
                 />
@@ -217,11 +283,31 @@ export function SiteHeader() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`text-[15px] font-medium transition-colors duration-200 ${textCls} ${hoverCls}`}
+                  // className={`text-[15px] font-medium transition-colors duration-200 ${textCls} ${hoverCls}`}
+                  className={`text-[15px] font-medium transition-colors duration-200 ${
+  isActive(link.href)
+    ? "text-[#3b67ff]"
+    : `${textCls} ${hoverCls}`
+}`}
                 >
                   {link.label}
                 </Link>
               ))}
+
+              {/* Resources trigger */}
+              <button
+                type="button"
+                onMouseEnter={openRes}
+                onClick={() => (resIsOpenRef.current ? closeRes() : openRes())}
+                className={`flex items-center gap-1 text-[15px] font-medium transition-colors duration-200 ${activeResCls}`}
+              >
+                Resources
+                <ChevronDown
+                  ref={resChevronRef}
+                  className="w-4 h-4"
+                  style={{ transformOrigin: "50% 50%" }}
+                />
+              </button>
             </div>
 
             {/* ── Right: Lang + CTA ─────────────────────────────────────── */}
@@ -279,22 +365,11 @@ export function SiteHeader() {
                   }
                 `}
               >
-                {/* Shine sweep */}
                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
                 <span className="relative flex items-center gap-2">
                   Contact Us
-                  <svg
-                    className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                  >
-                    <path
-                      d="M1 7h12M8 2l5 5-5 5"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                  <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
               </button>
@@ -312,43 +387,73 @@ export function SiteHeader() {
           </div>
         </nav>
 
-        {/* ── Mega dropdown ─────────────────────────────────────────────── */}
+        {/* ── Services mega dropdown ────────────────────────────────────── */}
         <div
-          ref={dropdownRef}
+          ref={svcDropdownRef}
           style={{ pointerEvents: "none", display: "none" }}
           className="absolute top-full left-1/2 -translate-x-1/2 z-40 w-[82%] max-w-[1200px] pt-5"
-          onMouseEnter={openDropdown}
-          onMouseLeave={closeDropdown}
+          onMouseEnter={openSvc}
+          onMouseLeave={closeSvc}
         >
           <div className="grid grid-cols-2 gap-x-14 gap-y-1 rounded-[30px] border border-slate-200 bg-white px-12 py-10 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
             {serviceItems.map((item, i) => (
               <Link
                 key={item.slug}
                 href={item.href}
-                ref={(el) => { if (el) itemRefs.current[i] = el }}
-                onClick={closeDropdown}
+                ref={(el) => { if (el) svcItemRefs.current[i] = el }}
+                onClick={closeSvc}
                 className="group relative flex items-center gap-5 rounded-2xl px-5 py-4 transition-all duration-300 ease-out hover:bg-[#f7faff]"
               >
-                {/* Accent bar */}
                 <div className="h-9 w-[4px] shrink-0 rounded-full bg-slate-200 transition-all duration-300 group-hover:bg-[#072448]" />
-
-                {/* Label */}
                 <span className="text-[15px] font-semibold tracking-[-0.01em] text-black transition-colors duration-300 group-hover:text-[#072448]">
                   {item.label}
                 </span>
-
-                {/* Arrow */}
-                <svg
-                  className="ml-auto h-4 w-4 shrink-0 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#072448]"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="ml-auto h-4 w-4 shrink-0 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#072448]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M9 18l6-6-6-6" />
                 </svg>
               </Link>
             ))}
+          </div>
+        </div>
+
+        {/* ── Resources mega dropdown ───────────────────────────────────── */}
+        <div
+          ref={resDropdownRef}
+          style={{ pointerEvents: "none", display: "none" }}
+          className="absolute top-full left-1/2 -translate-x-1/2 z-40 w-[50%] max-w-[640px] pt-5"
+          onMouseEnter={openRes}
+          onMouseLeave={closeRes}
+        >
+          <div className="rounded-[30px] border border-slate-200 bg-white px-8 py-8 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
+            <div className="grid grid-cols-2 gap-4">
+              {resourceItems.map((item, i) => {
+                const Icon = item.icon
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    ref={(el) => { if (el) resItemRefs.current[i] = el }}
+                    onClick={closeRes}
+                    className="group flex items-start gap-4 rounded-2xl border border-transparent p-5 transition-all duration-300 hover:border-[#e8eefc] hover:bg-[#f7faff]"
+                  >
+                    {/* Icon box */}
+                    <div className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-[#f0f4ff] transition-colors duration-300 group-hover:bg-[#072448]">
+                      <Icon className="w-5 h-5 text-[#072448] transition-colors duration-300 group-hover:text-white" />
+                    </div>
+
+                    {/* Text */}
+                    <div className="min-w-0">
+                      <p className="text-[15px] font-semibold text-[#0f172a] group-hover:text-[#072448] transition-colors duration-300">
+                        {item.label}
+                      </p>
+                      <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
+                        {item.description}
+                      </p>
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
           </div>
         </div>
       </header>
@@ -358,19 +463,24 @@ export function SiteHeader() {
         <div className="lg:hidden fixed inset-0 z-40 bg-white overflow-y-auto pt-[72px]">
           <div className="px-5 py-5 space-y-1">
 
+            <Link
+              href="/"
+              onClick={() => setIsMobileOpen(false)}
+              className="block py-3 text-base font-medium text-[#0d1e3c] hover:text-[#3b67ff] transition-colors"
+            >
+              Home
+            </Link>
+
             {/* Services accordion */}
             <button
               type="button"
               className="w-full flex items-center justify-between py-3 text-base font-medium text-[#0d1e3c]"
-              onClick={() => setIsServicesOpen((v) => !v)}
+              onClick={() => setMobileServices((v) => !v)}
             >
               Services
-              <ChevronDown
-                className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? "rotate-180" : ""}`}
-              />
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileServices ? "rotate-180" : ""}`} />
             </button>
-
-            {isServicesOpen && (
+            {mobileServices && (
               <div className="pl-3 space-y-1 mb-2">
                 {serviceItems.map((item) => (
                   <Link
@@ -388,15 +498,46 @@ export function SiteHeader() {
 
             {/* Other nav links */}
             {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsMobileOpen(false)}
-                className="block py-3 text-base font-medium text-[#0d1e3c] hover:text-[#3b67ff] transition-colors"
-              >
+  <Link
+    key={link.label}
+    href={link.href}
+    className={`text-[15px] font-medium transition-colors duration-200 ${
+      isActive(link.href)
+        ? "text-[#3b67ff]"
+        : `${textCls} ${hoverCls}`
+    }`}
+  >
                 {link.label}
               </Link>
             ))}
+
+            {/* Resources accordion */}
+            <button
+              type="button"
+              className="w-full flex items-center justify-between py-3 text-base font-medium text-[#0d1e3c]"
+              onClick={() => setMobileResources((v) => !v)}
+            >
+              Resources
+              <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileResources ? "rotate-180" : ""}`} />
+            </button>
+            {mobileResources && (
+              <div className="pl-3 space-y-2 mb-2">
+                {resourceItems.map((item) => {
+                  const Icon = item.icon
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsMobileOpen(false)}
+                      className="flex items-center gap-3 py-2 px-3 text-[13px] font-medium text-[#374151] hover:text-[#3b67ff] rounded-lg hover:bg-[#f0f4ff] transition-colors"
+                    >
+                      <Icon className="w-4 h-4 shrink-0 text-[#072448]" />
+                      {item.label}
+                    </Link>
+                  )
+                })}
+              </div>
+            )}
 
             <div className="pt-4">
               <button
@@ -429,6 +570,7 @@ export function SiteHeader() {
                 ))}
               </div>
             </div>
+
           </div>
         </div>
       )}
