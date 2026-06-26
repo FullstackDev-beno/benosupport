@@ -1617,22 +1617,20 @@ export const servicesData: Record<string, ServiceData> = {
     meta: {
       title: "Cloud & Platform Engineering ",
       description:
-        "Beno Support delivers cloud migration, Kubernetes orchestration, serverless architecture, FinOps, and internal developer platforms on AWS, Azure, and GCP.",
+        "Beno Support helps businesses build scalable cloud ecosystems, automate infrastructure, and accelerate deployment through modern cloud engineering services.",
     },
     hero: {
       image:"/assets/services/hero/6.svg",
-      tagline: "Cloud That",
-      tagline2: "Scales Infinitely",
+      tagline: "Modernize Infrastructure with Cloud-Native Engineering",
       description:
-        "Cloud-native architecture, Kubernetes platforms, and FinOps engineering that give your business the infrastructure agility, security, and cost efficiency to scale without limits.",
+        "Beno Support helps businesses build scalable cloud ecosystems, automate infrastructure, and accelerate deployment through modern cloud engineering services.",
     },
     intro: {
       sectionLabel: "Intro",
-      title: "BEYOND MIGRATION: CLOUD-NATIVE ENGINEERING",
+      title: "Cloud Infrastructure & DevOps Engineering Services",
       paragraphs: [
-        "Cloud transformation is not a one-time migration project — it is a continuous engineering journey that compounds business value through automation, optimisation, and platform maturity.",
-        "At Beno Support, we design, build, and operate cloud-native platforms on AWS, Azure, and GCP that give your engineering teams the infrastructure agility to move fast without breaking things.",
-        "From Kubernetes orchestration and serverless architecture to FinOps governance and internal developer platforms, our cloud engineers build the foundations that scale with your business.",
+        "Cloud transformation is essential for scalability, agility, and operational efficiency. Beno Support helps startups, SMBs, and enterprises modernize infrastructure, optimize cloud operations, and accelerate deployment using Kubernetes, DevOps, and cloud-native engineering solutions.",
+
       ],
     },
     capabilities: {
@@ -1643,94 +1641,129 @@ export const servicesData: Record<string, ServiceData> = {
       cards: [
         {
           iconName: "Cloud",
-          title: "Cloud Migration\n& Modernisation",
+          title: "Multi-Cloud Architecture (AWS / Azure / GCP)",
           description:
             "Lift-and-shift, re-platform, and re-architect migration strategies with zero-downtime cutover planning across AWS, Azure, and GCP.",
+            features: [
+            "Cloud migration strategy",
+            "Hybrid cloud deployment",
+            "Infrastructure optimization",
+            "Cloud security architecture",
+            "High-availability systems",
+            "Multi-cloud management",
+          ],
           highlighted: false,
         },
         {
           iconName: "Server",
-          title: "Kubernetes &\nContainer Orchestration",
+          title: "Kubernetes & Container Orchestration",
           description:
-            "Production-grade Kubernetes platforms with autoscaling, service mesh, GitOps workflows, and multi-cluster management for enterprise workloads.",
-          highlighted: true,
+            "Deploy scalable containerized applications with Kubernetes and modern orchestration frameworks.",
+           features: [
+            "Kubernetes deployment",
+            "Docker containerization",
+            "Service orchestration",
+            "Infrastructure automation",
+            "Cloud-native scalability",
+            "Container security",
+          ],
+            highlighted: true,
         },
         {
           iconName: "Zap",
-          title: "Serverless &\nEvent-Driven Architecture",
+          title: "DevOps & CI/CD Pipelines",
           description:
-            "AWS Lambda, Azure Functions, and Cloud Run implementations with event-driven microservices patterns for cost-efficient, auto-scaling workloads.",
-          highlighted: false,
+            "Accelerate software delivery through automated deployment workflows and DevOps practices.",
+           features: [
+            "Automated deployments",
+            "CI/CD implementation",
+            "Infrastructure as Code",
+            "DevSecOps integration",
+            "Monitoring & observability",
+            "Release automation",
+          ],
+            highlighted: false,
         },
         {
           iconName: "Globe",
-          title: "Multi-Cloud &\nHybrid Strategy",
+          title: "FinOps & Cloud Cost Optimisation",
           description:
-            "Vendor-neutral cloud strategies with workload portability, cross-cloud networking, data gravity management, and unified observability.",
-          highlighted: false,
+            "Improve cloud efficiency and reduce infrastructure costs through strategic optimization practices.",
+           features: [
+            "Cloud cost monitoring",
+            "Resource optimization",
+            "Cloud governance",
+            "Usage analytics",
+            "Budget optimization",
+            "FinOps automation",
+          ],
+            highlighted: false,
         },
         {
           iconName: "GitMerge",
-          title: "DevOps &\nPlatform Engineering",
+          title: "DataOps & Data Pipelines",
           description:
-            "Internal developer platforms, golden path templates, and CI/CD automation that reduce developer cycle time by 60% and eliminate toil.",
-          highlighted: false,
+            "Build scalable enterprise data workflows for analytics and AI systems.",
+          features: [
+            "ETL/ELT pipelines",
+            "Real-time data pipelines",
+            "Data orchestration",
+            "Cloud data engineering",
+            "Data governance",
+            "Analytics infrastructure",
+          ],
+            highlighted: false,
         },
-        {
-          iconName: "DollarSign",
-          title: "FinOps & Cloud\nCost Engineering",
-          description:
-            "Cloud cost governance, rightsizing, reserved instance management, and commitment optimisation consistently delivering 30–40% cost savings.",
-          highlighted: false,
-        },
+       
       ],
+
     },
     scale: {
       sectionLabel: "How We Guarantee Scale",
-      title: "HOW WE GUARANTEE CLOUD SCALE & RELIABILITY",
+      title: "Our Cloud & Platform Engineering Guardrails",
       subtitle:
-        "Our cloud platforms are engineered for 99.99% availability, elastic scale, and continuous cost optimisation — not just provisioned and forgotten.",
+        "Beno Support combines cloud-native expertise, strict SOPs, and advanced automation to build resilient, self-healing infrastructure.",
       cards: [
         {
           iconName: "TrendingUp",
-          title: "Auto-Scaling\nInfrastructure",
+          title: "Production-Ready Kubernetes Orchestration",
           description:
-            "Demand-driven auto-scaling ensuring zero performance degradation during traffic spikes while maintaining cost efficiency at low load periods.",
+            "Enforces strict network policies and pod autoscaling via AWS EKS or Azure AKS for zero-downtime availability",
           highlighted: false,
         },
         {
           iconName: "Lock",
-          title: "Cloud-Native\nSecurity",
+          title: "Immutable Infrastructure as Code (IaC)",
           description:
-            "Runtime security, container image scanning, secrets management, and Cloud Security Posture Management across all environments and accounts.",
+            "Deploys deterministic, multi-environment infrastructure using peer-reviewed Terraform and OpenTofu templates.",
           highlighted: true,
         },
         {
           iconName: "TrendingDown",
-          title: "FinOps Cost\nGovernance",
+          title: "Automated CI/CD & GitOps Workflows",
           description:
-            "Monthly FinOps reviews, showback/chargeback models, and spend anomaly alerting keeping cloud costs predictable and continuously optimised.",
+            "Drives reliable delivery through GitLab CI, GitHub Actions, or ArgoCD with mandatory build validation.",
           highlighted: false,
         },
         {
           iconName: "Database",
-          title: "Disaster Recovery\n& Business Continuity",
+          title: "DevSecOps & Shift-Left Security SOPs",
           description:
-            "RTO/RPO-driven DR architectures with automated failover, multi-region replication, and regular DR drills ensuring recoverability at all times.",
+            "Injects automated pipeline scanning via Trivy or Snyk and manages secrets securely through HashiCorp Vault",
           highlighted: false,
         },
         {
           iconName: "Network",
-          title: "High-Availability\nEngineering",
+          title: "Continuous FinOps & Resource Optimization",
           description:
-            "Active-active multi-AZ and multi-region architectures with intelligent traffic routing ensuring 99.99% availability for mission-critical workloads.",
+            "Cuts cloud waste using weekly Kubecost and CloudWatch audits to automate resource right-sizing.",
           highlighted: false,
         },
         {
           iconName: "Layers",
-          title: "Platform\nObservability",
+          title: "Proactive Observability & Incident Response",
           description:
-            "Full-stack observability with distributed tracing, log aggregation, metrics dashboards, SLO tracking, and intelligent alerting across the entire platform.",
+            "Monitors stack health using Prometheus, Grafana, and Datadog with automated anomaly alerting.",
           highlighted: false,
         },
       ],
@@ -1798,6 +1831,39 @@ export const servicesData: Record<string, ServiceData> = {
         },
       ],
     },
+      cta: {
+      title: "Ready to Modernize Your Cloud Infrastructure?",
+      content:
+        "Partner with Beno Support to optimize cloud operations, automate infrastructure, and accelerate cloud-native transformation.",
+      buttons: ["Schedule Cloud Consultation", "Talk to Platform Engineers", "Request a Proposal"],
+    },
+    faq: [
+  {
+    question: "Which cloud platforms do you support?",
+    answer:
+      "We support AWS, Microsoft Azure, Google Cloud Platform, and hybrid cloud environments.",
+  },
+  {
+    question: "Do you provide cloud migration services?",
+    answer:
+      "Yes. We help businesses migrate applications and infrastructure to cloud-native environments.",
+  },
+  {
+    question: "Can you optimize cloud costs?",
+    answer:
+      "Absolutely. Our FinOps services improve cloud efficiency and reduce unnecessary operational spending.",
+  },
+  {
+    question: "Do you provide Kubernetes consulting?",
+    answer:
+      "Yes. We provide Kubernetes deployment, orchestration, automation, and container management services.",
+  },
+  {
+    question: "Can startups use your cloud engineering services?",
+    answer:
+      "Yes. We help startups build scalable cloud infrastructure designed for rapid growth and operational flexibility.",
+  },
+],
   },
 
   "workforce-technology-human-capital-advisory": {
@@ -1808,18 +1874,18 @@ export const servicesData: Record<string, ServiceData> = {
     },
     hero: {
       image:"/assets/services/hero/7.svg",
-      tagline: "Empowering Your",
-      tagline2: "Digital Workforce",
+      tagline: "Modernize Workforce Operations with Intelligent HR Technology ",
+  
       description:
-        "HRMS implementation, workforce analytics, and digital learning platforms that transform how enterprises attract, develop, and retain their most important asset — their people.",
+        "Beno Support helps startups, SMBs, and enterprises streamline workforce operations, modernize HR systems, and improve employee experiences through AI-powered workforce technology solutions.",
     },
     intro: {
       sectionLabel: "Intro",
-      title: "BEYOND HR SYSTEMS: PEOPLE-FIRST DIGITAL TRANSFORMATION",
+      title: "HR Technology & Workforce Transformation Solutions",
       paragraphs: [
-        "The future of work is digital, data-driven, and deeply human. Organisations that invest in workforce technology gain measurable advantages in talent attraction, retention, and productivity.",
-        "At Beno Support, we implement HRMS platforms, build workforce analytics capabilities, and deploy learning management systems that make people operations more strategic and impactful.",
-        "Our human capital advisors combine technology expertise with deep HR domain knowledge to deliver implementations that employees actually adopt — and that deliver measurable workforce outcomes.",
+        "Modern workforce management requires scalable HR technology, intelligent automation, and data-driven employee experiences.",
+        "Beno Support helps organizations modernize workforce operations through enterprise HR platform integration, AI workforce transformation, talent technology consulting, and HR process automation solutions designed for operational efficiency and business growth.",
+        "Our teams combine HR technology expertise, automation capabilities, enterprise integration experience, and workforce transformation strategies to help businesses build future-ready workforce ecosystems.",
       ],
     },
     capabilities: {
@@ -1830,98 +1896,161 @@ export const servicesData: Record<string, ServiceData> = {
       cards: [
         {
           iconName: "Users",
-          title: "HRMS Implementation\n& Integration",
+          title: "Enterprise HR Tech Integration",
           description:
-            "Deploy and integrate leading HRMS platforms including SAP SuccessFactors, Workday, and BambooHR with full data migration and change management support.",
-          highlighted: false,
+            "Implement and optimize enterprise HR platforms that improve workforce operations, employee engagement, and digital HR transformation.",
+          features: [
+  "HR platform implementation",
+  "Workforce system integration",
+  "Employee lifecycle automation",
+  "HR analytics & reporting",
+  "Payroll & attendance integration",
+  "Enterprise HR modernization",
+],
+            highlighted: false,
         },
         {
-          iconName: "BarChart2",
-          title: "Workforce Analytics\n& Insights",
-          description:
-            "Advanced people analytics platforms delivering real-time workforce intelligence, attrition prediction, skills gap analysis, and headcount planning.",
-          highlighted: true,
-        },
+  iconName: "Users",
+  title: "Workday",
+  description:
+    "Streamline HR, finance, and workforce operations using Workday’s cloud-based enterprise platform designed for modern digital organizations.",
+  features: [
+    "Workday implementation",
+    "Human capital management",
+    "Payroll & workforce",
+    "Employee experience",
+    "HR analytics",
+    "Cloud-based HR",
+  ],
+  highlighted: false,
+},
+       {
+  iconName: "Users",
+  title: "SAP Success Factors",
+  description:
+    "Modernize workforce operations and talent management with SAP SuccessFactors solutions that improve employee engagement, performance, and organizational agility.",
+  features: [
+    "SAP implementation",
+    "Talent management",
+    "Performance management",
+    "Employee experience",
+    "Learning & development integration",
+    "Workforce analytics",
+  ],
+  highlighted: false,
+},
         {
-          iconName: "BookOpen",
-          title: "Learning Management\nSystems",
-          description:
-            "LMS implementation, custom e-learning content development, and blended learning programs that upskill your workforce and close critical skills gaps at scale.",
-          highlighted: false,
-        },
-        {
-          iconName: "Smartphone",
-          title: "Employee Self-Service\nPortals",
-          description:
-            "Intuitive self-service portals reducing HR workload by 50% through automated leave management, payslip access, onboarding workflows, and policy libraries.",
-          highlighted: false,
-        },
-        {
-          iconName: "UserCheck",
-          title: "Talent Technology\n& ATS",
-          description:
-            "Applicant tracking system implementation, candidate experience design, and AI-powered recruitment workflow automation for faster, better hires.",
-          highlighted: false,
-        },
-        {
-          iconName: "FileText",
-          title: "Payroll &\nBenefits Automation",
-          description:
-            "End-to-end payroll automation with multi-country compliance, benefits administration, and statutory reporting integration for global workforces.",
-          highlighted: false,
-        },
+  iconName: "Users",
+  title: "Darwinbox",
+  description:
+    "Empower organizations with an agile HR platform that simplifies workforce management, employee engagement, and operational efficiency.",
+  features: [
+    "Darwinbox implementation",
+    "Employee lifecycle management",
+    "Payroll & HRMS integration",
+    "Workforce engagement solutions",
+    "HR workflow automation",
+    "Mobile-first employee experience",
+  ],
+  highlighted: false,
+},
+{
+  iconName: "Brain",
+  title: "AI Workforce Upskilling Programs",
+  description:
+    "Prepare teams for AI-driven transformation through workforce enablement and digital upskilling initiatives.",
+  features: [
+    "AI readiness training",
+    "Workforce AI adoption programs",
+    "Digital transformation workshops",
+    "AI productivity enablement",
+    "Leadership upskilling sessions",
+    "Enterprise learning strategies",
+  ],
+  highlighted: false,
+},
+{
+  iconName: "Briefcase",
+  title: "Talent Technology Consulting",
+  description:
+    "Optimize recruitment, workforce planning, and talent management systems through technology-driven consulting.",
+  features: [
+    "Talent acquisition optimization",
+    "Recruitment technology consulting",
+    "Workforce planning systems",
+    "Employee engagement tools",
+    "HR workflow optimization",
+    "Talent analytics solutions",
+  ],
+  highlighted: false,
+},
+{
+  iconName: "Workflow",
+  title: "HR Process Automation",
+  description:
+    "Automate repetitive HR operations and workforce management tasks using intelligent automation solutions.",
+  features: [
+    "Employee onboarding automation",
+    "Leave & attendance workflows",
+    "HR approval automation",
+    "AI-driven HR operations",
+    "Document workflow automation",
+    "Workforce productivity optimization",
+  ],
+  highlighted: false,
+},
       ],
     },
-    scale: {
-      sectionLabel: "How We Guarantee Scale",
-      title: "HOW WE GUARANTEE WORKFORCE TRANSFORMATION",
-      subtitle:
-        "Technology implementations only succeed when people adopt them. Our change management, training, and analytics capabilities ensure your workforce transformation sticks.",
-      cards: [
-        {
-          iconName: "RefreshCw",
-          title: "Change\nManagement",
-          description:
-            "Structured OCM programs ensuring new technology adoption through stakeholder engagement, communication planning, training, and resistance management.",
-          highlighted: false,
-        },
-        {
-          iconName: "GraduationCap",
-          title: "Digital Learning\nPathways",
-          description:
-            "Personalised, role-based learning journeys that continuously develop employee capabilities, close skills gaps, and support career progression.",
-          highlighted: true,
-        },
-        {
-          iconName: "Monitor",
-          title: "Digital Adoption\nPlatforms",
-          description:
-            "In-app guidance, contextual help overlays, and usage analytics accelerating employee adoption of new technology by up to 70% vs. classroom training alone.",
-          highlighted: false,
-        },
-        {
-          iconName: "Heart",
-          title: "Culture &\nEngagement",
-          description:
-            "Employee engagement platforms, continuous pulse surveys, and feedback loops that build high-performance culture and measurably reduce unwanted turnover.",
-          highlighted: false,
-        },
-        {
-          iconName: "Shield",
-          title: "Workforce\nCompliance",
-          description:
-            "Automated statutory compliance management, labour law adherence tracking, and audit-ready documentation across all jurisdictions and employment types.",
-          highlighted: false,
-        },
-        {
-          iconName: "TrendingDown",
-          title: "Retention\nAnalytics",
-          description:
-            "Predictive retention models and early warning systems identifying flight-risk employees before departure — enabling timely, targeted intervention.",
-          highlighted: false,
-        },
-      ],
+   scale: {
+  sectionLabel: "How We Guarantee Scale",
+  title: "Workforce Engineering & Platform Assurance",
+  subtitle:
+    "Building reliable, compliant, and highly automated workforce platforms with enterprise precision.",
+  cards: [
+    {
+      iconName: "Database",
+      title: "Core HR\nArchitecture Alignment",
+      description:
+        "Migrate complex legacy data smoothly to Workday, SuccessFactors, or Darwinbox without operational risk or data loss.",
+      highlighted: false,
     },
+    {
+      iconName: "Search",
+      title: "Empirical\nProcess Mining",
+      description:
+        "Run detailed workplace discovery workshops to isolate and fix operational bottlenecks before engineering automations.",
+      highlighted: true,
+    },
+    {
+      iconName: "MessageSquare",
+      title: "Continuous\nFeedback Loops",
+      description:
+        "Embed pulse data capturing directly into daily communication tools to mitigate early attrition risks.",
+      highlighted: false,
+    },
+    {
+      iconName: "ShieldCheck",
+      title: "Compliant Global\nArchitecture",
+      description:
+        "Apply automated regulatory checklists and international compliance standards to safeguard remote operations.",
+      highlighted: false,
+    },
+    {
+      iconName: "GraduationCap",
+      title: "High-Fidelity\nTraining Modules",
+      description:
+        "Deliver interactive learning modules and post-training benchmarks to ensure fast platform adoption.",
+      highlighted: false,
+    },
+    {
+      iconName: "BarChart3",
+      title: "Unified Workforce\nAnalytics",
+      description:
+        "Clean data schemas to monitor headcount metrics, software utilization, and output on one single glass pane.",
+      highlighted: false,
+    },
+  ],
+},
     useCases: {
       sectionLabel: "Case Studies",
       title: "STRATEGIC USE CASES",
@@ -1985,5 +2114,43 @@ export const servicesData: Record<string, ServiceData> = {
         },
       ],
     },
+ cta: {
+  title: "Ready to Transform Workforce Operations?",
+  content:
+    "Partner with Beno Support to modernize HR systems, automate workforce processes, and build intelligent workforce technology ecosystems that improve operational efficiency.",
+  buttons: [
+    "Request Workforce Consultation",
+    "Schedule a Discovery Session",
+    "Talk to HR Technology Experts",
+  ],
+},
+
+faq: [
+  {
+    question: "Which HR platforms does Beno Support support?",
+    answer:
+      "We support Workday, SAP SuccessFactors, Darwinbox, and enterprise HR technology ecosystems.",
+  },
+  {
+    question: "Do you provide AI workforce transformation consulting?",
+    answer:
+      "Yes. We help businesses implement AI-driven workforce modernization and employee productivity solutions.",
+  },
+  {
+    question: "Can you automate HR workflows?",
+    answer:
+      "Absolutely. We automate onboarding, approvals, attendance, employee operations, and HR process management workflows.",
+  },
+  {
+    question: "Do you provide workforce upskilling programs?",
+    answer:
+      "Yes. We offer AI readiness programs, digital transformation workshops, and workforce enablement training initiatives.",
+  },
+  {
+    question: "Can startups and SMBs use your workforce technology services?",
+    answer:
+      "Yes. We provide scalable HR technology and workforce automation solutions tailored for startups, SMBs, and enterprises.",
+  },
+],
   },
 }
