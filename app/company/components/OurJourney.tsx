@@ -1,192 +1,263 @@
-import {
-  Rocket,
-  Monitor,
-  Cloud,
-  Shield,
-  Brain,
-  Globe,
-} from "lucide-react";
+"use client";
 
-const milestones = [
+import { Rocket, Monitor, Cloud, Shield, Brain, Globe, LucideIcon } from "lucide-react";
+
+interface Milestone {
+  year: string;
+  title: string;
+  icon: LucideIcon;
+  position: "top" | "bottom";
+}
+
+const milestones: Milestone[] = [
   {
     year: "2008",
-    title: "Founded as an IT services and technology support company.",
+    title: "Company Founded",
     icon: Rocket,
-    position: "bottom",
+    position: "top",
   },
   {
     year: "2012",
-    title:
-      "Expanded into enterprise software development and infrastructure services.",
+    title: "Expanded into Enterprise Software Development",
     icon: Monitor,
-    position: "top",
+    position: "bottom",
   },
   {
     year: "2016",
-    title:
-      "Started delivering cloud modernization and digital transformation solutions.",
+    title: "Entered Cloud & Digital Transformation Services",
     icon: Cloud,
-    position: "bottom",
+    position: "top",
   },
   {
     year: "2020",
-    title:
-      "Strengthened enterprise engineering, DevOps, and cybersecurity capabilities.",
+    title: "Enhanced Engineering, DevOps & Cybersecurity Expertise",
     icon: Shield,
-    position: "top",
-  },
-  {
-    year: "2023",
-    title:
-      "Expanded into AI automation, intelligent systems, and enterprise AI consulting.",
-    icon: Brain,
     position: "bottom",
   },
   {
-    year: "Present",
-    title:
-      "Delivering AI-first engineering, cloud-native platforms, cybersecurity, and digital transformation solutions globally.",
-    icon: Globe,
+    year: "2023",
+    title: "Launched AI Automation & Intelligent Solutions",
+    icon: Brain,
     position: "top",
   },
+  {
+    year: "Present",
+    title: "Delivering Global AI, Cloud & Engineering Excellence",
+    icon: Globe,
+    position: "bottom",
+  },
+];
+
+const blockColors: string[] = [
+  "#0B2345",
+  "#143D73",
+  "#1F5A99",
+  "#2D73BD",
+  "#4288D5",
+  "#72AFE8",
+];
+
+const iconBgColors: string[] = [
+  "#0B2345",
+  "#143D73",
+  "#1F5A99",
+  "#2D73BD",
+  "#4288D5",
+  "#5A9BD4",
 ];
 
 export default function JourneyTimeline() {
   return (
-    <section className="relative py-28 bg-[#f8fafc] h-[90vh] w-full overflow-hidden ">
-      {/* World Map */}
-      <div
-        className="absolute inset-0  bg-center bg-no-repeat bg-contain"
-        style={{
-          opacity: 0.03,
-          backgroundImage:
-            "url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')",
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Heading */}
-        <div className="mt-[-70px]">
-          <span className="text-xs font-bold tracking-[3px] uppercase text-blue-600">
-            Our Journey Timeline
-          </span>
-
-          <h2 className="text-5xl font-bold text-[#0B2B5B] mt-3">
-          Our Journey
+    <section className="w-full py-20 px-6" style={{ backgroundColor: "#F8FAFC" }}>
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="mb-16">
+          <p
+            className="text-xs font-semibold tracking-widest uppercase mb-3"
+            style={{ color: "#3b67ff" }}
+          >
+            OUR JOURNEY TIMELINE
+          </p>
+          <h2
+            className="text-4xl font-extrabold"
+            style={{ color: "#0B2345" }}
+          >
+            Our Journey
           </h2>
         </div>
 
-        {/* Desktop */}
-        <div className="hidden lg:block relative h-[550px] scale-[0.8]">
-          {/* Line */}
-          <svg
-            className="absolute inset-0 w-full h-full"
-            viewBox="0 0 1200 600"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M80 500
-              L260 320
-              L430 430
-              L650 180
-              L850 330
-              L1100 120"
-              fill="none"
-              stroke="#1976d2"
-              strokeWidth="4"
-            />
-          </svg>
+        {/* Desktop Timeline */}
+        <div className="hidden md:block">
+          {/* Top row: icons + descriptions for "top" milestones */}
+          <div className="flex items-end" style={{ minHeight: "180px" }}>
+            {milestones.map((milestone, index) => {
+              const Icon = milestone.icon;
+              return (
+                <div
+                  key={milestone.year}
+                  className="flex-1 flex flex-col items-center justify-end"
+                >
+                  {milestone.position === "top" ? (
+                    <div className="flex flex-col items-center gap-3 pb-0">
+                      {/* Description above icon */}
+                      <p
+                        className="text-center text-sm font-semibold leading-snug"
+                        style={{
+                          maxWidth: "160px",
+                          color: index >= 3 ? "#2D73BD" : "#0B2345",
+                        }}
+                      >
+                        {milestone.title}
+                      </p>
 
-          {milestones.map((item, index) => {
-            const positions = [
-              { left: "5%", top: "68%" },
-              { left: "22%", top: "35%" },
-              { left: "36%", top: "55%" },
-              { left: "54%", top: "13%" },
-              { left: "71%", top: "39%" },
-              { left: "92%", top: "3%" },
-            ];
+                      {/* Icon Circle */}
+                      <div
+                        className="rounded-full flex items-center justify-center"
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          backgroundColor: iconBgColors[index],
+                          flexShrink: 0,
+                        }}
+                      >
+                        <Icon color="white" size={34} strokeWidth={1.5} />
+                      </div>
 
-            const pos = positions[index];
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={index}
-                className="absolute -translate-x-1/2"
-                style={pos}
-              >
-                {/* Content Top */}
-                {item.position === "top" && (
-                  <div className="absolute bottom-28 left-1/2 -translate-x-1/2 w-64 text-center">
-                    <h3 className="text-4xl font-bold text-[#0B2B5B]">
-                      {item.year}
-                    </h3>
-
-                    <p className="text-gray-700 mt-3 leading-relaxed">
-                      {item.title}
-                    </p>
-                  </div>
-                )}
-
-                {/* Pin */}
-                <div className="relative group">
-                  <div className="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center border-4 border-white">
-                    <div className="w-16 h-16 bg-[#0B2B5B] rounded-full flex items-center justify-center">
-                      <Icon className="w-8 h-8 text-white" />
+                      {/* Connector Line */}
+                      <div
+                        className="w-px"
+                        style={{
+                          height: "32px",
+                          backgroundColor: iconBgColors[index],
+                        }}
+                      />
                     </div>
-                  </div>
-
-                  <div className="absolute top-16 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[14px] border-r-[14px] border-t-[22px] border-l-transparent border-r-transparent border-t-[#0B2B5B]" />
-
-                  <div className="absolute top-[88px] left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-white shadow-lg" />
-
-                  <div className="absolute top-[100px] left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-blue-600" />
+                  ) : (
+                    /* Empty spacer for bottom milestones */
+                    <div style={{ height: "80px" }} />
+                  )}
                 </div>
+              );
+            })}
+          </div>
 
-                {/* Content Bottom */}
-                {item.position === "bottom" && (
-                  <div className="absolute top-36 left-1/2 -translate-x-1/2 w-64 text-center">
-                    <h3 className="text-4xl font-bold text-[#0B2B5B]">
-                      {item.year}
-                    </h3>
-
-                    <p className="text-gray-700 mt-3 leading-relaxed">
-                      {item.title}
-                    </p>
-                  </div>
-                )}
+          {/* Timeline Bar */}
+          <div className="flex" style={{ borderRadius: "4px", overflow: "hidden" }}>
+            {milestones.map((milestone, index) => (
+              <div
+                key={milestone.year}
+                className="flex-1 flex items-center justify-center py-5"
+                style={{ backgroundColor: blockColors[index] }}
+              >
+                <span
+                  className="font-extrabold text-white"
+                  style={{ fontSize: "clamp(1.1rem, 2vw, 1.75rem)", letterSpacing: "-0.01em" }}
+                >
+                  {milestone.year}
+                </span>
               </div>
-            );
-          })}
+            ))}
+          </div>
+
+          {/* Bottom row: icons + descriptions for "bottom" milestones */}
+          <div className="flex items-start" style={{ minHeight: "180px" }}>
+            {milestones.map((milestone, index) => {
+              const Icon = milestone.icon;
+              return (
+                <div
+                  key={milestone.year}
+                  className="flex-1 flex flex-col items-center justify-start"
+                >
+                  {milestone.position === "bottom" ? (
+                    <div className="flex flex-col items-center gap-3 pt-0">
+                      {/* Connector Line */}
+                      <div
+                        className="w-px"
+                        style={{
+                          height: "32px",
+                          backgroundColor: iconBgColors[index],
+                        }}
+                      />
+
+                      {/* Icon Circle */}
+                      <div
+                        className="rounded-full flex items-center justify-center"
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          backgroundColor: iconBgColors[index],
+                          flexShrink: 0,
+                        }}
+                      >
+                        <Icon color="white" size={34} strokeWidth={1.5} />
+                      </div>
+
+                      {/* Description below icon */}
+                      <p
+                        className="text-center text-sm font-semibold leading-snug"
+                        style={{
+                          maxWidth: "160px",
+                          color: index >= 3 ? "#2D73BD" : "#0B2345",
+                        }}
+                      >
+                        {milestone.title}
+                      </p>
+                    </div>
+                  ) : (
+                    /* Empty spacer for top milestones */
+                    <div style={{ height: "80px" }} />
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Mobile */}
-        <div className="lg:hidden space-y-10">
-          {milestones.map((item, i) => {
-            const Icon = item.icon;
+        {/* Mobile Timeline */}
+        <div className="flex flex-col gap-0 md:hidden">
+          <div className="relative pl-12">
+            {/* Vertical line */}
+            <div
+              className="absolute left-5 top-0 bottom-0 w-px"
+              style={{ backgroundColor: "#4288D5" }}
+            />
 
-            return (
-              <div
-                key={i}
-                className="bg-white rounded-3xl p-6 shadow-lg border"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-[#0B2B5B] flex items-center justify-center">
-                    <Icon className="text-white w-6 h-6" />
+            {milestones.map((milestone, index) => {
+              const Icon = milestone.icon;
+              return (
+                <div key={milestone.year} className="relative flex items-start mb-8 last:mb-0">
+                  {/* Icon Circle on the line */}
+                  <div
+                    className="absolute -left-7 rounded-full flex items-center justify-center z-10 flex-shrink-0"
+                    style={{
+                      width: "48px",
+                      height: "48px",
+                      backgroundColor: iconBgColors[index],
+                      top: "0px",
+                    }}
+                  >
+                    <Icon color="white" size={22} strokeWidth={1.5} />
                   </div>
 
-                  <h3 className="text-2xl font-bold text-[#0B2B5B]">
-                    {item.year}
-                  </h3>
+                  {/* Card content */}
+                  <div className="ml-6 pt-1">
+                    <span
+                      className="block text-lg font-extrabold mb-1"
+                      style={{ color: blockColors[index] }}
+                    >
+                      {milestone.year}
+                    </span>
+                    <p
+                      className="text-sm font-medium leading-snug"
+                      style={{ color: "#334155" }}
+                    >
+                      {milestone.title}
+                    </p>
+                  </div>
                 </div>
-
-                <p className="mt-4 text-gray-600 leading-relaxed">
-                  {item.title}
-                </p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -26,7 +26,7 @@ export default function Page() {
         <TechPartners />
         <IndustriesSection />
         <SuccessStories />
-        <InsightsSection />
+        {/* <InsightsSection /> */}
         <FaqSection />
         <CtaSection />
       </main>

@@ -977,7 +977,7 @@ export default function IndustriesPage() {
       <ChallengesSection />
       <SolutionsSection />
       <IndustriesGrid />
-      <UseCasesSection />
+      {/* <UseCasesSection /> */}
       <BusinessOutcomes />
       <TechStackSection />
       <WhyChooseSection />
