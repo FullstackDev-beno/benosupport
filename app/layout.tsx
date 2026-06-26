@@ -19,19 +19,19 @@ export const metadata: Metadata = {
   title: 'Beno Support — AI-Native Engineering & Technology',
   description:
     'Beno Support helps startups, SMBs, and enterprises accelerate innovation, optimize operations, modernize infrastructure, and build scalable digital ecosystems.',
-  generator: 'v0.app',
+  generator: 'beno',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/assets/logo.svg',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/assets/logo.svg',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/assets/logo.svg',
         type: 'image/svg+xml',
       },
     ],

@@ -17,6 +17,7 @@ import { SiteHeader } from "@/components/site-header"
 import IndustriesHero from "./component/hero"
 import BusinessOutcomes, { OutcomeMetricsSection } from "./component/outcomeMetrix"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -89,22 +90,77 @@ const outcomesData = [
 const techStackData = {
   sectionLabel: "Technology Partners",
   title: "Modern Technologies Powering Digital Transformation",
-  filters: ["AI / Machine Learning", "Cloud & DevOps", "Data & Analytics", "Mobile & Frontend", "Security", "Integration"],
-  stacks: [
-    { name: "OpenAI",       category: "AI / Machine Learning",   initial: "AI" },
-    { name: "AWS",          category: "Cloud & DevOps",           initial: "AWS" },
-    { name: "Azure",        category: "Cloud & DevOps",           initial: "Az" },
-    { name: "GCP",          category: "Cloud & DevOps",           initial: "GCP" },
-    { name: "TensorFlow",   category: "AI / Machine Learning",   initial: "TF" },
-    { name: "Snowflake",    category: "Data & Analytics",         initial: "SF" },
-    { name: "dbt",          category: "Data & Analytics",         initial: "dbt" },
-    { name: "React Native", category: "Mobile & Frontend",        initial: "RN" },
-    { name: "Flutter",      category: "Mobile & Frontend",        initial: "Fl" },
-    { name: "Prisma",       category: "Integration",              initial: "Pr" },
-    { name: "Terraform",    category: "Cloud & DevOps",           initial: "TF" },
-    { name: "CrowdStrike",  category: "Security",                 initial: "CS" },
+  filters: [
+    "AI / Machine Learning",
+    "Cloud & DevOps",
+    "Data & Analytics",
+    "Mobile & Frontend",
+    "Security",
+    "Integration",
   ],
-}
+  stacks: [
+    {
+      name: "OpenAI",
+      category: "AI / Machine Learning",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg",
+    },
+    {
+      name: "AWS",
+      category: "Cloud & DevOps",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    },
+    {
+      name: "Azure",
+      category: "Cloud & DevOps",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+    },
+    {
+      name: "GCP",
+      category: "Cloud & DevOps",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    },
+    {
+      name: "TensorFlow",
+      category: "AI / Machine Learning",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+    },
+    {
+      name: "Snowflake",
+      category: "Data & Analytics",
+      icon: "https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg",
+    },
+    // {
+    //   name: "dbt",
+    //   category: "Data & Analytics",
+    //   icon: "https://www.vectorlogo.zone/logos/getdbt/getdbt-icon.svg",
+    // },
+    {
+      name: "React Native",
+      category: "Mobile & Frontend",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    },
+    {
+      name: "Flutter",
+      category: "Mobile & Frontend",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+    },
+    {
+      name: "Prisma",
+      category: "Integration",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",
+    },
+    {
+      name: "Terraform",
+      category: "Cloud & DevOps",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+    },
+    // {
+    //   name: "CrowdStrike",
+    //   category: "Security",
+    //   icon: "https://www.vectorlogo.zone/logos/crowdstrike/crowdstrike-icon.svg",
+    // },
+  ],
+};
 
 const whyData = {
     sectionLabel: "Why Choose Us",
@@ -640,69 +696,118 @@ function OutcomeMetrics() {
 
 function TechStackSection() {
   const [activeFilter, setActiveFilter] = useState("All")
-  const ref      = useRef<HTMLElement>(null)
-  const gridRef  = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+
   useSectionEntrance(ref)
 
   const allFilters = ["All", ...techStackData.filters]
-  const filtered = activeFilter === "All"
-    ? techStackData.stacks
-    : techStackData.stacks.filter(s => s.category === activeFilter)
+
+  const filtered =
+    activeFilter === "All"
+      ? techStackData.stacks
+      : techStackData.stacks.filter((s) => s.category === activeFilter)
 
   useEffect(() => {
     const cards = gridRef.current?.querySelectorAll<HTMLElement>(".tech-card")
     if (!cards?.length) return
-    gsap.fromTo(cards,
+
+    gsap.fromTo(
+      cards,
       { opacity: 0, y: 28, scale: 0.9 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.06, ease: "power3.out" })
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "power3.out",
+      }
+    )
   }, [activeFilter])
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
+
     const ctx = gsap.context(() => {
       const cards = el.querySelectorAll<HTMLElement>(".tech-card")
-      gsap.fromTo(cards,
+
+      gsap.fromTo(
+        cards,
         { opacity: 0, y: 28, scale: 0.9 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.06, ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 80%" } })
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          stagger: 0.06,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+          },
+        }
+      )
     }, el)
+
     return () => ctx.revert()
   }, [])
 
   return (
     <section ref={ref} className="bg-[#072448] py-20 lg:py-28">
       <div className="mx-auto max-w-[1300px] px-6 lg:px-12">
-        <div className="mb-10 text-center max-w-2xl mx-auto">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
           <span className="label-chip text-xs font-semibold uppercase tracking-wider text-white">
             {techStackData.sectionLabel}
           </span>
+
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
             {techStackData.title}
           </h2>
         </div>
 
-        {/* filter pills */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {allFilters.map(f => (
-            <button key={f} onClick={() => setActiveFilter(f)}
-              className={`rounded-full px-4 py-2 text-[12px] font-semibold transition-all duration-200 ${f === activeFilter
-                ? "bg-[#072448] text-white shadow-[0_4px_16px_rgba(59,103,255,0.4)]"
-                : "border border-white/15 text-white hover:border-white/35 hover:text-white/80"}`}>
+        {/* Filters */}
+        <div className="mb-10 flex flex-wrap justify-center gap-2">
+          {allFilters.map((f) => (
+            <button
+              key={f}
+              onClick={() => setActiveFilter(f)}
+              className={`rounded-full px-4 py-2 text-[12px] font-semibold transition-all duration-200 ${
+                f === activeFilter
+                  ? "bg-[#1e3a6e] text-white shadow-[0_4px_16px_rgba(59,103,255,0.4)]"
+                  : "border border-white/15 text-white hover:border-white/35 hover:text-white"
+              }`}
+            >
               {f}
             </button>
           ))}
         </div>
 
-        {/* tech cards */}
-        <div ref={gridRef} className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        {/* Cards */}
+        <div
+          ref={gridRef}
+          className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6"
+        >
           {filtered.map((s) => (
-            <div key={s.name}
-              className="tech-card flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-6 text-center backdrop-blur-sm cursor-default transition-all duration-300 hover:border-white/30">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-[#1e3a6e] text-[13px] font-extrabold text-white">
-                {s.initial}
+            <div
+              key={s.name}
+              className="tech-card flex cursor-default flex-col items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-6 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/30"
+            >
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white p-2 shadow-md">
+                <Image
+                  src={s.icon}
+                  alt={s.name}
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 object-contain"
+                  unoptimized
+                />
               </div>
-              <span className="text-[12px] font-semibold text-white/70">{s.name}</span>
+
+              <span className="text-[12px] font-semibold text-white/80">
+                {s.name}
+              </span>
             </div>
           ))}
         </div>
