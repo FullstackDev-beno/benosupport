@@ -35,6 +35,12 @@ const resourceItems = [
     description: "Real-world Agentic AI use cases for FinTech",
     icon: LayoutGrid,
   },
+  // {
+  //   label: "Case Studies",
+  //   href: "/caseStudy",
+  //   description: "Client success stories and project outcomes",
+  //   icon: FileText,
+  // },
 ]
 // ── Language config ────────────────────────────────────────────────────────
 const LANGUAGES = [
@@ -149,7 +155,7 @@ export function SiteHeader() {
     if (!el) return
     el.style.pointerEvents = "auto"
     gsap.killTweensOf(el)
-    gsap.set(el, { display: "block", opacity: 0, y: -14 })
+    gsap.set(el, { display: "flex", opacity: 0, y: -14 })
     gsap.to(el, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" })
     gsap.fromTo(
       items.filter(Boolean),
@@ -199,6 +205,7 @@ export function SiteHeader() {
   const activeResCls =
    pathname.startsWith("/blog") ||
    pathname.startsWith("/use-cases") ||
+  //  pathname.startsWith("/caseStudy") ||
    isResourcesOpen
     ? "text-[#3b67ff]"
     : `${textCls} ${hoverCls}`
@@ -390,11 +397,11 @@ export function SiteHeader() {
         <div
           ref={svcDropdownRef}
           style={{ pointerEvents: "none", display: "none" }}
-          className="absolute top-full left-1/2 -translate-x-1/2 z-40 w-[82%] max-w-[1200px] pt-5"
+          className="absolute top-full left-0 right-0 z-40 flex justify-center px-4 pt-5"
           onMouseEnter={openSvc}
           onMouseLeave={closeSvc}
         >
-          <div className="grid grid-cols-2 gap-x-14 gap-y-1 rounded-[30px] border border-slate-200 bg-white px-12 py-10 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
+          <div className="w-full max-w-[1200px] grid grid-cols-2 gap-x-14 gap-y-1 rounded-[30px] border border-slate-200 bg-white px-12 py-10 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
             {serviceItems.map((item, i) => (
               <Link
                 key={item.slug}
@@ -419,12 +426,12 @@ export function SiteHeader() {
         <div
           ref={resDropdownRef}
           style={{ pointerEvents: "none", display: "none" }}
-          className="absolute top-full left-1/2 -translate-x-1/2 z-40 w-[50%] max-w-[420px] pt-5"
+          className="absolute top-full left-0 right-0 z-40 flex justify-center px-4 pt-5"
           onMouseEnter={openRes}
           onMouseLeave={closeRes}
         >
-          <div className="rounded-[30px] border border-slate-200 bg-white px-8 py-8 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
-            <div className="grid grid-cols-1 gap-4">
+          <div className="w-full max-w-[640px] rounded-[30px] border border-slate-200 bg-white px-8 py-8 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
+            <div className="grid grid-cols-2 gap-4">
               {resourceItems.map((item, i) => {
                 const Icon = item.icon
                 return (
@@ -433,7 +440,7 @@ export function SiteHeader() {
                     href={item.href}
                     ref={(el) => { if (el) resItemRefs.current[i] = el }}
                     onClick={closeRes}
-                    className="group flex items-start gap-4 rounded-2xl border border-transparent p-5 transition-all duration-300 hover:border-[#e8eefc] hover:bg-[#f7faff]"
+                    className="group flex flex-col items-start gap-4 rounded-2xl border border-transparent p-5 transition-all duration-300 hover:border-[#e8eefc] hover:bg-[#f7faff]"
                   >
                     <div className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-[#f0f4ff] transition-colors duration-300 group-hover:bg-[#072448]">
                       <Icon className="w-5 h-5 text-[#072448] transition-colors duration-300 group-hover:text-white" />

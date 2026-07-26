@@ -4,9 +4,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { USE_CASES_FAQS } from "@/lib/use-cases-data"
+import type { UseCaseFaq } from "@/lib/use-cases-data"
 
-export default function UseCasesFaq() {
+export default function UseCasesFaq({ faqs }: { faqs: UseCaseFaq[] }) {
   return (
     <section className="bg-white py-16 lg:py-20">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
@@ -20,7 +20,7 @@ export default function UseCasesFaq() {
         </div>
 
         <Accordion className="w-full">
-          {USE_CASES_FAQS.map((faq, i) => (
+          {faqs.map((faq, i) => (
             <AccordionItem key={faq.q} value={`item-${i}`}>
               <AccordionTrigger className="text-left text-base font-medium text-[#072448]">
                 {faq.q}

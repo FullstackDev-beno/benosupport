@@ -3,20 +3,27 @@ import {
   PageCTASection,
 } from "@/components/page-cta"
 import { CONTACT_GET_IN_TOUCH_HREF } from "@/lib/proposal-cta"
-import { USE_CASES_CTA } from "@/lib/use-cases-data"
 
-export default function UseCasesCta() {
+export default function UseCasesCta({
+  title,
+  description,
+  buttonLabel,
+}: {
+  title: string
+  description: string
+  buttonLabel: string
+}) {
   return (
     <PageCTASection className="bg-[#f4f6f9]">
-      <h2 className="whitespace-nowrap text-[clamp(0.9rem,2.6vw,2rem)] font-bold tracking-[-0.02em] text-white">
-        {USE_CASES_CTA.title}
+      <h2 className="text-balance text-[clamp(1rem,2.6vw,2rem)] font-bold tracking-[-0.02em] text-white">
+        {title}
       </h2>
       <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-7 text-white/80">
-        {USE_CASES_CTA.description}
+        {description}
       </p>
       <div className="mt-8 flex justify-center">
         <PageCTAPrimaryButton href={CONTACT_GET_IN_TOUCH_HREF}>
-          {USE_CASES_CTA.buttonLabel}
+          {buttonLabel}
         </PageCTAPrimaryButton>
       </div>
     </PageCTASection>

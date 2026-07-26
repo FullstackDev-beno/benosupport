@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import { toAbsoluteUrl } from "@/lib/site-url"
+import { USE_CASES_INDEX } from "@/lib/use-cases-data"
 
-const title = "FinTech AI Use Cases | Agentic AI for Banking & Finance | Beno Support"
-const description =
-  "Explore real-world Agentic AI use cases across banking, lending, insurance, payments, fraud detection, compliance, and financial operations."
+const title = `${USE_CASES_INDEX.title} | Beno Support`
+const description = USE_CASES_INDEX.description
 const canonical = toAbsoluteUrl("/use-cases")
 
 export const metadata: Metadata = {
