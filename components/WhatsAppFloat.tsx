@@ -5,7 +5,7 @@ const WHATSAPP_URL = "https://wa.me/918929884560"
 function WhatsAppIcon() {
   return (
     <svg
-      className="size-5 shrink-0 animate-pulse"
+      className="size-5 shrink-0"
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden
@@ -22,7 +22,7 @@ export default function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="group fixed bottom-6 right-6 z-50 flex h-14 max-w-14 flex-row-reverse items-center overflow-hidden rounded-full bg-[#072448] text-white shadow-lg shadow-[#072448]/25 transition-all duration-300 ease-in-out hover:max-w-[11.5rem] hover:px-5"
+      className="group fixed bottom-6 right-6 z-50 flex h-14 max-w-14 flex-row-reverse items-center overflow-hidden rounded-full bg-button text-button-foreground shadow-lg shadow-button/25 transition-all duration-300 ease-in-out hover:max-w-[11.5rem] hover:px-5"
     >
       <span className="flex size-14 shrink-0 items-center justify-center">
         <WhatsAppIcon />
