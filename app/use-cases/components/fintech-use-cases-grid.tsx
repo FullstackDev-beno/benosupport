@@ -2,22 +2,60 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { ChevronDown, ChevronUp, Database } from "lucide-react"
+import {
+  Activity,
+  BarChart3,
+  ChevronDown,
+  ChevronUp,
+  ClipboardCheck,
+  Database,
+  DollarSign,
+  FileCheck,
+  FileSearch,
+  FileText,
+  MessageSquare,
+  Scale,
+  Shield,
+  ShieldAlert,
+  ShieldCheck,
+  Smartphone,
+  UserPlus,
+  type LucideIcon,
+} from "lucide-react"
 
 import {
-  FINTECH_USE_CASES,
   USE_CASES_INITIAL_VISIBLE,
-  type FinTechUseCase,
+  type UseCaseCard,
+  type UseCaseCardIcon,
 } from "@/lib/use-cases-data"
 import { CONTACT_GET_IN_TOUCH_HREF } from "@/lib/proposal-cta"
 
-function UseCaseCard({ useCase }: { useCase: FinTechUseCase }) {
+const USE_CASE_ICONS: Record<UseCaseCardIcon, LucideIcon> = {
+  "shield-alert": ShieldAlert,
+  "shield-check": ShieldCheck,
+  shield: Shield,
+  "file-check": FileCheck,
+  "file-search": FileSearch,
+  "file-text": FileText,
+  scale: Scale,
+  "clipboard-check": ClipboardCheck,
+  activity: Activity,
+  "message-square": MessageSquare,
+  smartphone: Smartphone,
+  "dollar-sign": DollarSign,
+  "user-plus": UserPlus,
+  "bar-chart": BarChart3,
+  database: Database,
+}
+
+function UseCaseCardItem({ useCase }: { useCase: UseCaseCard }) {
   const benefitsLabel = useCase.benefitsTitle ?? "Business Benefits"
+  const Icon = USE_CASE_ICONS[useCase.icon]
 
   return (
     <article className="flex h-full flex-col rounded-2xl bg-white p-6 sm:p-7">
       <div className="flex size-10 items-center justify-center rounded-lg bg-[#072448] text-white">
-        <Database className="size-5" strokeWidth={1.8} aria-hidden />
+        <Icon className="size-5" strokeWidth={1.8} aria-hidden />
       </div>
 
       <h3 className="mt-5 text-lg font-bold leading-snug text-[#072448]">
@@ -65,24 +103,29 @@ function UseCaseCard({ useCase }: { useCase: FinTechUseCase }) {
   )
 }
 
-export default function FintechUseCasesGrid() {
+export default function UseCasesGrid({
+  title,
+  cards,
+}: {
+  title: string
+  cards: UseCaseCard[]
+}) {
   const [expanded, setExpanded] = useState(false)
 
-  const visibleCases = FINTECH_USE_CASES.slice(0, USE_CASES_INITIAL_VISIBLE)
-  const hiddenCases = FINTECH_USE_CASES.slice(USE_CASES_INITIAL_VISIBLE)
-  const hasMore = hiddenCases.length > 0
-  const shownCases = expanded ? FINTECH_USE_CASES : visibleCases
+  const visibleCases = cards.slice(0, USE_CASES_INITIAL_VISIBLE)
+  const hasMore = cards.length > USE_CASES_INITIAL_VISIBLE
+  const shownCases = expanded ? cards : visibleCases
 
   return (
     <section className="bg-[#072448] py-16 lg:py-20">
       <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
         <h2 className="text-center text-balance text-[1.65rem] font-bold tracking-[-0.02em] text-white sm:text-[2rem]">
-          FinTech AI Use Cases
+          {title}
         </h2>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {shownCases.map((useCase) => (
-            <UseCaseCard key={useCase.title} useCase={useCase} />
+            <UseCaseCardItem key={useCase.title} useCase={useCase} />
           ))}
         </div>
 

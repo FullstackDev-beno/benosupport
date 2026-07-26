@@ -61,6 +61,7 @@ export const HTML_SITEMAP_SECTIONS = [
     links: [
       { label: "Insights", href: "/blog" },
       { label: "Use Cases", href: "/use-cases" },
+      // { label: "Case Studies", href: "/caseStudy" },
     ],
   },
   {
