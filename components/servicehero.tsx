@@ -113,7 +113,7 @@ function ServiceHero({
       className="relative flex h-dvh min-h-[640px] overflow-hidden bg-[#072448]"
     >
       {/* Left content */}
-      <div className="relative z-10 flex h-full w-full flex-col justify-center px-8 pb-8 pt-[72px] lg:w-[55%] lg:px-20 xl:pl-24">
+      <div className="relative z-10 flex h-full w-full flex-col justify-center px-8 pb-10 pt-28 lg:w-[55%] lg:px-16 lg:pb-12 lg:pt-32 xl:pl-24">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.05]"
           style={{
@@ -124,8 +124,8 @@ function ServiceHero({
         />
 
         <div className="relative max-w-[600px]">
-          <PageBreadcrumb items={breadcrumbItems} variant="dark" />
-          <h1 className="mb-6 text-[2.35rem] font-extrabold leading-[1.22] tracking-tight text-white sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]">
+          <PageBreadcrumb items={breadcrumbItems} variant="dark" className="mb-4" />
+          <h1 className="mb-5 text-[2rem] font-extrabold leading-[1.18] tracking-[-0.02em] text-white sm:text-[2.5rem] lg:text-[2.85rem] xl:text-[3.15rem]">
             <span
               ref={line1Ref}
               data-split-text={hero.tagline}
@@ -155,7 +155,7 @@ function ServiceHero({
 
           <p
             ref={subtitleRef}
-            className="type-body mb-10 max-w-[540px] text-white/85 lg:mb-12"
+            className="mb-8 max-w-[540px] text-[15px] leading-7 text-white/85 sm:text-base lg:mb-10"
           >
             {hero.description}
           </p>

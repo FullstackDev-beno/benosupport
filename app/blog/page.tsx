@@ -87,7 +87,7 @@ export default async function BlogPage() {
                   return (
                     <article
                       key={post.slug}
-                      className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#e2e8f0] bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-shadow hover:shadow-[0_12px_40px_rgba(7,36,72,0.08)]"
+                      className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#e2e8f0] bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_rgba(7,36,72,0.08)]"
                     >
                       <div className="relative aspect-[16/10] overflow-hidden bg-[#e8eefc]">
                         {imageUrl ? (
@@ -95,7 +95,7 @@ export default async function BlogPage() {
                             src={imageUrl}
                             alt={post.title}
                             fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                            className="object-cover"
                           />
                         ) : (
                           <div className="flex h-full items-center justify-center bg-gradient-to-br from-[#072448] to-[#0a3a73] text-sm font-semibold tracking-[0.18em] text-white/70">
