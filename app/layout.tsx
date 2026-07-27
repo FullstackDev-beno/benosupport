@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
-import LiveChatWidget from '@/components/LiveChatWidget'
+// import LiveChatWidget from '@/components/LiveChatWidget'
 import SocialSidebar from '@/components/social-sidebar'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
 import { ProposalModalProvider } from '@/hooks/use-proposal-modal'
@@ -94,7 +94,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           {children}
         </ProposalModalProvider>
         <SocialSidebar />
-        <LiveChatWidget />
+        {/* <LiveChatWidget /> */}
         <WhatsAppFloat />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
