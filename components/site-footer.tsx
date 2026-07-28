@@ -51,6 +51,7 @@ const industryLinks: FooterLink[] = [
   "EdTech",
   "E-commerce",
   "Telecom",
+  "Hospitality",
 ].map((label) => ({ label, href: "/industries" }))
 
 const columns = [

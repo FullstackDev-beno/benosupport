@@ -1459,6 +1459,178 @@ const TELECOM_DETAIL: UseCaseDetail = {
   },
 }
 
+const HOSPITALITY_DETAIL: UseCaseDetail = {
+  slug: "the-future-of-hospitality-is-here",
+  listingTag: "Hospitality · Agentic AI",
+  hero: {
+    tag: "Use Case",
+    title:
+      "The Future of Hospitality Is Here: 8 Agentic AI Use Cases You Should Know",
+    titleLines: [
+      "The Future of Hospitality Is Here:",
+      "8 Agentic AI Use Cases You Should Know",
+    ],
+    subtitle:
+      "Learn how Agentic AI is enhancing every stage of the guest journey—from reservations and concierge services to housekeeping, pricing, and customer engagement.",
+    image: "/assets/use_cases/Hospitality.png",
+    imageAlt:
+      "Agentic AI use cases transforming hospitality guest experiences and hotel operations",
+    breadcrumbLabel: "Hospitality AI",
+  },
+  whyTitle: "Why Hospitality Businesses Are Investing in Agentic AI",
+  whyCards: [
+    {
+      title: "Rising Guest Expectations",
+      icon: "clipboard-list",
+      description:
+        "Today's guests expect seamless digital experiences, personalized recommendations, faster service, and 24/7 support. Meanwhile, hospitality businesses must manage reservations, staffing, housekeeping, guest requests, pricing, and operations efficiently while controlling costs.",
+    },
+    {
+      title: "Intelligent Hospitality Automation",
+      icon: "cpu",
+      description:
+        "Agentic AI goes beyond traditional automation. Intelligent AI agents can understand guest preferences, make autonomous decisions, coordinate operational workflows, and continuously optimize hospitality services with minimal human intervention.",
+    },
+    {
+      title: "Business Impact",
+      icon: "trending-up",
+      description:
+        "Whether you're a hotel chain, resort, restaurant, travel accommodation provider, vacation rental platform, or hospitality startup, Agentic AI helps improve guest satisfaction, increase operational efficiency, optimize revenue, and reduce manual workload.",
+    },
+  ],
+  gridTitle: "Hospitality AI Use Cases",
+  cards: [
+    {
+      title: "AI-Powered Guest Concierge & Virtual Assistants",
+      icon: "shield-check",
+      subtitle: "Deliver personalized guest support anytime, anywhere.",
+      description:
+        "Modern travelers expect instant responses throughout their journey. Agentic AI can assist with reservations, check-in guidance, room service requests, local recommendations, FAQs, and personalized guest assistance while seamlessly escalating complex requests to staff.",
+      benefits: [
+        "24/7 guest support",
+        "Faster response times",
+        "Improved guest satisfaction",
+        "Reduced front desk workload",
+      ],
+    },
+    {
+      title: "Intelligent Reservation & Booking Management",
+      icon: "dollar-sign",
+      subtitle: "Simplify booking operations and reduce manual coordination.",
+      description:
+        "Managing reservations across multiple booking channels can be complex. Agentic AI automatically manages bookings, updates availability, prevents overbooking, handles cancellations, and optimizes room allocation in real time.",
+      benefits: [
+        "Higher booking accuracy",
+        "Reduced overbooking",
+        "Faster reservation management",
+        "Better occupancy utilization",
+      ],
+    },
+    {
+      title: "Dynamic Pricing & Revenue Optimization",
+      icon: "file-search",
+      subtitle: "Maximize revenue through intelligent pricing decisions.",
+      description:
+        "Room rates constantly change based on demand, seasonality, competitor pricing, and local events. Agentic AI continuously analyzes market conditions and automatically recommends or adjusts pricing strategies to maximize occupancy and revenue.",
+      benefits: [
+        "Increased revenue",
+        "Better occupancy rates",
+        "Smarter pricing strategies",
+        "Improved profitability",
+      ],
+    },
+    {
+      title: "Housekeeping & Maintenance Workflow Automation",
+      icon: "user-plus",
+      subtitle: "Improve operational efficiency behind the scenes.",
+      description:
+        "Housekeeping schedules, maintenance requests, and room readiness often require manual coordination. Agentic AI intelligently assigns tasks, prioritizes urgent requests, tracks completion, and ensures rooms are prepared efficiently for arriving guests.",
+      benefits: [
+        "Faster room turnover",
+        "Improved staff productivity",
+        "Better operational visibility",
+        "Reduced delays",
+      ],
+    },
+    {
+      title: "Personalized Guest Experience & Recommendations",
+      icon: "bar-chart",
+      subtitle: "Create memorable stays with tailored experiences.",
+      description:
+        "Every guest has unique preferences. Agentic AI analyzes booking history, previous stays, dining preferences, and guest behavior to recommend room upgrades, dining options, spa services, activities, and personalized offers.",
+      benefits: [
+        "Higher guest engagement",
+        "Increased upselling opportunities",
+        "Better customer loyalty",
+        "Enhanced guest experiences",
+      ],
+    },
+    {
+      title: "Intelligent Customer Feedback & Reputation Management",
+      icon: "activity",
+      subtitle: "Turn guest feedback into continuous improvement.",
+      description:
+        "Hotels receive reviews across multiple channels every day. Agentic AI monitors reviews, analyzes guest sentiment, identifies recurring issues, prioritizes service improvements, and helps hospitality teams respond more effectively.",
+      benefits: [
+        "Better online reputation",
+        "Faster issue resolution",
+        "Improved guest satisfaction",
+        "Actionable business insights",
+      ],
+    },
+    {
+      title: "Hospitality Workforce Scheduling & Operations",
+      icon: "shield",
+      subtitle: "Optimize staffing based on real-time demand.",
+      description:
+        "Managing hospitality staff efficiently is challenging during seasonal demand and peak hours. Agentic AI forecasts occupancy, predicts staffing requirements, automates shift scheduling, and helps allocate resources where they're needed most.",
+      benefits: [
+        "Optimized staffing",
+        "Reduced labor costs",
+        "Better resource utilization",
+        "Improved operational efficiency",
+      ],
+    },
+    {
+      title: "Hospitality Analytics & Business Intelligence",
+      icon: "database",
+      subtitle: "Make smarter business decisions with real-time insights.",
+      description:
+        "Hospitality businesses generate valuable operational, financial, and guest data every day. Agentic AI consolidates this information into interactive dashboards that help leaders monitor occupancy, revenue, guest satisfaction, service performance, and operational KPIs.",
+      benefits: [
+        "Better business visibility",
+        "Data-driven decision-making",
+        "Improved forecasting",
+        "Higher operational efficiency",
+      ],
+    },
+  ],
+  faqs: [
+    {
+      q: "What are the most common Agentic AI use cases in hospitality?",
+      a: "Common hospitality AI use cases include AI-powered guest concierge, intelligent reservation management, dynamic pricing, housekeeping automation, personalized guest recommendations, reputation management, workforce scheduling, and hospitality analytics dashboards.",
+    },
+    {
+      q: "Can Agentic AI integrate with existing hotel and PMS systems?",
+      a: "Yes. Agentic AI can integrate with property management systems (PMS), booking engines, CRM platforms, channel managers, and guest communication tools through secure APIs — enhancing operations without replacing your entire hospitality stack.",
+    },
+    {
+      q: "Is Agentic AI suitable for hotels, resorts, and vacation rentals?",
+      a: "Yes. Hotel chains, boutique properties, resorts, restaurants, and vacation rental platforms can all benefit — from guest support and booking automation to pricing optimization and staff scheduling tailored to their scale and operations.",
+    },
+    {
+      q: "Will Agentic AI replace hospitality staff?",
+      a: "No. Agentic AI supports hospitality teams by automating routine requests, coordinating workflows, and surfacing insights — while staff remain essential for guest relationships, service quality, and complex decision-making.",
+    },
+  ],
+  cta: {
+    title: "Ready to Build AI Solutions for Hospitality?",
+    description:
+      "Whether you're modernizing hotel operations, enhancing guest experiences, optimizing revenue, or building AI-powered hospitality platforms, Beno Support helps hospitality businesses implement secure, scalable, and intelligent Agentic AI solutions tailored to real operational challenges.",
+    buttonLabel: "Talk to Our Experts",
+  },
+}
+
 export const USE_CASE_DETAILS: UseCaseDetail[] = [
   FINTECH_DETAIL,
   HEALTHCARE_DETAIL,
@@ -1468,6 +1640,7 @@ export const USE_CASE_DETAILS: UseCaseDetail[] = [
   AVIATION_DETAIL,
   GAMING_DETAIL,
   TELECOM_DETAIL,
+  HOSPITALITY_DETAIL,
 ]
 
 /** Cards shown on /use-cases listing — derived from detail pages. */
