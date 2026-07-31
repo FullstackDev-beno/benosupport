@@ -7,12 +7,14 @@ import { TechStack } from "@/components/tech-stack"
 import { TechPartners } from "@/components/tech-partners"
 import { IndustriesSection } from "@/components/industries-section"
 import { FeaturedClients } from "@/components/featured-clients"
-// import { SuccessStories } from "@/components/success-stories"
+import { SuccessStories } from "@/components/success-stories"
 import { InsightsSection } from "@/components/insights-section"
 import { FaqSection } from "@/components/faq-section"
 import { CtaSection } from "@/components/cta-section"
 import { SiteFooter } from "@/components/site-footer"
 import ServicePillars from "@/components/service-pillars"
+
+export const revalidate = 60
 
 export default function Page() {
   return (
@@ -27,8 +29,8 @@ export default function Page() {
         <TechPartners />
         <IndustriesSection />
         <FeaturedClients />
-        {/* <SuccessStories /> — hidden until feature is ready */}
-        {/* <InsightsSection /> */}
+        <SuccessStories />
+        <InsightsSection />
         <FaqSection />
         <CtaSection />
       </main>

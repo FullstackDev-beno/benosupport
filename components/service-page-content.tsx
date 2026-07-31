@@ -766,9 +766,6 @@ function CTAFallbackSection() {
         <PageCTAPrimaryButton onClick={openProposalModal}>
           Request a Proposal
         </PageCTAPrimaryButton>
-        <PageCTAOutlineButton onClick={openProposalModal}>
-          Schedule a Consultation
-        </PageCTAOutlineButton>
         <PageCTAOutlineButton href={CONTACT_GET_IN_TOUCH_HREF}>
           Talk to Our Experts
         </PageCTAOutlineButton>
