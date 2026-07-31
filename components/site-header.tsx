@@ -3,7 +3,15 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { gsap } from "@/lib/gsap"
-import { Menu, X, ChevronDown, Globe, BookOpen, LayoutGrid } from "lucide-react"
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Globe,
+  BookOpen,
+  LayoutGrid,
+  FileText,
+} from "lucide-react"
 import { SERVICE_NAV_ITEMS } from "@/lib/site-navigation"
 import { useRouter } from "next/navigation"
 
@@ -35,12 +43,12 @@ const resourceItems = [
     description: "Real-world Agentic AI use cases for FinTech",
     icon: LayoutGrid,
   },
-  // {
-  //   label: "Case Studies",
-  //   href: "/caseStudy",
-  //   description: "Client success stories and project outcomes",
-  //   icon: FileText,
-  // },
+  {
+    label: "Case Studies",
+    href: "/case-studies",
+    description: "Client success stories and project outcomes",
+    icon: FileText,
+  },
 ]
 // ── Language config ────────────────────────────────────────────────────────
 const LANGUAGES = [
@@ -205,7 +213,7 @@ export function SiteHeader() {
   const activeResCls =
    pathname.startsWith("/blog") ||
    pathname.startsWith("/use-cases") ||
-  //  pathname.startsWith("/caseStudy") ||
+   pathname.startsWith("/case-studies") ||
    isResourcesOpen
     ? "text-[#3b67ff]"
     : `${textCls} ${hoverCls}`
@@ -430,8 +438,8 @@ export function SiteHeader() {
           onMouseEnter={openRes}
           onMouseLeave={closeRes}
         >
-          <div className="w-full max-w-[640px] rounded-[30px] border border-slate-200 bg-white px-8 py-8 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
-            <div className="grid grid-cols-2 gap-4">
+          <div className="w-full max-w-[900px] rounded-[30px] border border-slate-200 bg-white px-8 py-8 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
+            <div className="grid grid-cols-3 gap-4">
               {resourceItems.map((item, i) => {
                 const Icon = item.icon
                 return (

@@ -188,4 +188,34 @@
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
   </url>
+  <url>
+       <loc>https://www.benosupport.com/case-studies</loc>
+       <lastmod>2026-07-30T17:00:00+00:00</lastmod>
+       <changefreq>weekly</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.benosupport.com/case-studies/bihar-tourism-digital-ecosystem</loc>
+       <lastmod>2026-07-30T17:00:00+00:00</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.benosupport.com/case-studies/noida-water-billing-amc</loc>
+       <lastmod>2026-07-30T19:00:00+00:00</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.benosupport.com/case-studies/wars-lab-ubs-scheduling-biometrics</loc>
+       <lastmod>2026-07-31T08:00:00+00:00</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://www.benosupport.com/case-studies/rota-legal-lpr-traffic-operations</loc>
+       <lastmod>2026-07-31T08:00:00+00:00</lastmod>
+       <changefreq>monthly</changefreq>
+       <priority>0.6400</priority>
+  </url>
 </urlset>
