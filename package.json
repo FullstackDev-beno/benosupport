@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "brand-icons": "node scripts/generate-brand-icons.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -42,6 +43,7 @@
     "@types/react-dom": "^19",
     "png-to-ico": "^3.0.2",
     "postcss": "^8.5",
+    "simple-icons": "^16.27.1",
     "tailwindcss": "^4.2.0",
     "typescript": "5.7.3"
   }
