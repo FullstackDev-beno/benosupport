@@ -101,7 +101,6 @@ const BRAND_SLUGS: Record<string, string> = {
   WebAuthn: "webauthn",
   Go: "go",
   Golang: "go",
-  "Spring Boot": "springboot",
   "Java Spring Boot": "springboot",
   MongoDB: "mongodb",
   Elasticsearch: "elasticsearch",
