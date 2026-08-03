@@ -29,7 +29,7 @@ const phases = [
       "Engagement Planning",
       "Relationship Management",
     ],
-    image: "/assets/home/our_process/process1.png",
+    image: "/assets/our_process/process1.png",
     imageAlt: "Beno Support team collaborating during discovery workshops",
   },
   {
@@ -44,7 +44,7 @@ const phases = [
       "Real-Time Collaboration",
       "MIS & Reporting",
     ],
-    image: "/assets/home/our_process/process2.png",
+    image: "/assets/our_process/process2.png",
     imageAlt: "Project leads reviewing execution dashboards and timelines",
   },
   {
@@ -60,7 +60,7 @@ const phases = [
       "Continuous Feedback",
       "Quality Assurance",
     ],
-    image: "/assets/home/our_process/process3.png",
+    image: "/assets/our_process/process3.png",
     imageAlt: "Engineers conducting quality reviews on delivery work",
   },
   {
@@ -76,7 +76,7 @@ const phases = [
       "Transition Process",
       "Quality Process",
     ],
-    image: "/assets/home/our_process/process4.png",
+    image: "/assets/our_process/process4.png",
     imageAlt: "Engineering team enabling modern delivery systems",
   },
   {
@@ -92,7 +92,7 @@ const phases = [
       "Transparent Communication",
       "Flexible Engagement Models",
     ],
-    image: "/assets/home/our_process/process5.png",
+    image: "/assets/our_process/process5.png",
     imageAlt: "Leaders aligning on engagement success principles",
   },
   {
@@ -107,7 +107,7 @@ const phases = [
       "Operational Efficiency",
       "Strong Client Relationships",
     ],
-    image: "/assets/home/our_process/process6.png",
+    image: "/assets/our_process/process6.png",
     imageAlt: "Client success teams supporting long-term partnership goals",
   },
   {
@@ -123,7 +123,7 @@ const phases = [
       "Continuous Improvement",
       "Customer-Centric Delivery",
     ],
-    image: "/assets/home/our_process/process7.png",
+    image: "/assets/our_process/process7.png",
     imageAlt: "Teams iterating on delivery excellence and process improvement",
   },
 ]
@@ -287,13 +287,19 @@ export function ProcessSection() {
               </div>
 
               <div className="relative mx-auto aspect-square w-full max-w-[280px] overflow-hidden rounded-2xl bg-[#e8edf3] lg:mx-0 lg:max-w-none">
-                <Image
-                  src={active.image}
-                  alt={active.imageAlt}
-                  fill
-                  sizes="(max-width: 1024px) 280px, 320px"
-                  className="object-cover object-center"
-                />
+                {phases.map((phase, index) => (
+                  <Image
+                    key={phase.image}
+                    src={phase.image}
+                    alt={phase.imageAlt}
+                    fill
+                    priority={index === 0}
+                    sizes="(max-width: 1024px) 280px, 320px"
+                    className={`object-cover object-center transition-opacity duration-300 ease-out ${
+                      index === activeIndex ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
 
