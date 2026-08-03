@@ -16,7 +16,7 @@ const government = [
   { name: "UPPCL",             logo: "/assets/publicimg/govt/uppcl.svg" },
   { name: "UP Government",     logo: "/assets/publicimg/govt/up.svg" },
   { name: "DESCO",             logo: "/assets/publicimg/govt/desco.svg" },
-  { name: "BT",                logo: "/assets/publicimg/govt/bt.svg" },
+  { name: "Bihar Tourism",                logo: "/assets/publicimg/govt/bt.svg" },
 ]
 
 const technology = [
@@ -82,7 +82,7 @@ function ClientCard({
     
         transition-all duration-200 cursor-default select-none
       "
-      style={{ width: tall ? 210 : 190, height: tall ? 170 : 130, padding: "16px 18px", flexShrink: 0 }}
+      style={{ width: tall ? 210 : 190, height: tall ? 170 : 172, padding: "16px 18px", flexShrink: 0 }}
     >
       {client.logo ? (
         <img
@@ -102,7 +102,7 @@ function ClientCard({
         </span>
       )}
       <span className="text-[10px] text-[#6b7a99] font-semibold text-center leading-tight tracking-wide group-hover:text-[#3b67ff] transition-colors duration-200">
-        {/* {client.name} */}
+        {client.name}
       </span>
     </div>
   )
