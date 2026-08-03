@@ -80,7 +80,7 @@ export default async function BlogPage() {
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {posts.map((post) => {
                   const imageUrl = post.mainImage
-                    ? urlFor(post.mainImage).width(800).height(500).fit('crop').url()
+                    ? urlFor(post.mainImage).width(800).height(450).fit('crop').url()
                     : null
                   const published = formatDate(post.publishedAt)
 
@@ -89,7 +89,7 @@ export default async function BlogPage() {
                       key={post.slug}
                       className="group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#e2e8f0] bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_rgba(7,36,72,0.08)]"
                     >
-                      <div className="relative aspect-[16/10] overflow-hidden bg-[#e8eefc]">
+                      <div className="relative aspect-video overflow-hidden bg-[#e8eefc]">
                         {imageUrl ? (
                           <Image
                             src={imageUrl}

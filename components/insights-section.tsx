@@ -46,7 +46,7 @@ export async function InsightsSection() {
         <div className="grid gap-6 md:grid-cols-3">
           {posts.map((post) => {
             const imageUrl = post.mainImage
-              ? urlFor(post.mainImage).width(800).height(500).fit("crop").url()
+              ? urlFor(post.mainImage).width(800).height(450).fit("crop").url()
               : null
             const published = formatDate(post.publishedAt)
 
@@ -57,7 +57,7 @@ export async function InsightsSection() {
               >
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="relative block aspect-[16/10] overflow-hidden bg-[#e8eefc]"
+                  className="relative block aspect-video overflow-hidden bg-[#e8eefc]"
                 >
                   {imageUrl ? (
                     <Image
