@@ -1,326 +1,318 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { gsap, ScrollTrigger } from "@/lib/gsap"
+import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
+import { ArrowRight, Check } from "lucide-react"
 
-const steps = [
+import { gsap } from "@/lib/gsap"
+
+const PHASE_WORDS = [
+  "ONE",
+  "TWO",
+  "THREE",
+  "FOUR",
+  "FIVE",
+  "SIX",
+  "SEVEN",
+] as const
+
+const phases = [
   {
-    title: "CLIENT\nONBOARDING",
-    step: "1",
+    label: "Our Approach",
+    subtitle: "Foundational Discovery",
+    title: "Our Approach: Understanding your business before building solutions.",
     description:
-      "Deep analysis of goals and daily tasks highlights ways to improve efficiency, setting up clear communication channels and a customized plan from day one.",
-    descRow: "odd", // odd = 1st desc row (top-aligned with shorter connector)
+      "We begin every engagement by studying your goals, operating constraints, and success metrics—so the delivery plan is grounded in real business context, not assumptions.",
+    points: [
+      "Requirement Engagement",
+      "Client Onboarding",
+      "Engagement Planning",
+      "Relationship Management",
+    ],
+    image: "/assets/home/our_process/process1.png",
+    imageAlt: "Beno Support team collaborating during discovery workshops",
   },
   {
-    title: "SMART\nPLANNING",
-    step: "2",
+    label: "Process Management",
+    subtitle: "Structured Execution",
+    title: "Process Management: Structured execution with complete visibility.",
     description:
-      "Project timelines and budgets stay on track through clear guidelines, realistic timelines, and risk prevention before any technical setup begins.",
-    descRow: "even",
+      "Clear ownership, service levels, and real-time reporting keep every milestone transparent—so stakeholders always know status, risks, and next actions.",
+    points: [
+      "Service Level Setup",
+      "SOPs & Framework",
+      "Real-Time Collaboration",
+      "MIS & Reporting",
+    ],
+    image: "/assets/home/our_process/process2.png",
+    imageAlt: "Project leads reviewing execution dashboards and timelines",
   },
   {
-    title: "QUALITY\nBUILDING",
-    step: "3",
+    label: "Quality Process",
+    subtitle: "Lifecycle Consistency",
+    title:
+      "Quality Process: Delivering consistent quality throughout the project lifecycle.",
     description:
-      "Smart AI tools (like language and machine learning models) are used alongside proven quality methods to eliminate errors and constantly improve the product.",
-    descRow: "odd",
+      "Quality is built into every stage—reviews, feedback loops, and continuous improvement practices that protect outcomes from kickoff through release.",
+    points: [
+      "Audits & Reviews",
+      "Process Improvement",
+      "Continuous Feedback",
+      "Quality Assurance",
+    ],
+    image: "/assets/home/our_process/process3.png",
+    imageAlt: "Engineers conducting quality reviews on delivery work",
   },
   {
-    title: "SYSTEM\nSECURITY",
-    step: "4",
+    label: "Technology Enablement",
+    subtitle: "Modern Engineering",
+    title:
+      "Technology Enablement: Building delivery with modern engineering practices.",
     description:
-      "Highly secure and scalable systems are built on top-tier cloud systems, supported by regular safety checks and active monitoring to prevent downtime.",
-    descRow: "even",
+      "We equip delivery with the right talent, tooling, and transition models—so architecture, development, and operations stay aligned as the product scales.",
+    points: [
+      "Resource Process",
+      "Talent Process",
+      "Transition Process",
+      "Quality Process",
+    ],
+    image: "/assets/home/our_process/process4.png",
+    imageAlt: "Engineering team enabling modern delivery systems",
   },
   {
-    title: "LONG-TERM\nPARTNERSHIP",
-    step: "5",
+    label: "Key Success Factors",
+    subtitle: "Engagement Principles",
+    title:
+      "Key Success Factors: The principles behind every successful engagement.",
     description:
-      "Success relies on shared milestones, regular reviews, and cost-saving choices that systematically clear out roadblocks and keep support simple.",
-    descRow: "odd",
+      "Time, cost, quality, security, and communication stay balanced through flexible engagement models designed for predictable, high-trust delivery.",
+    points: [
+      "Time, Cost & Quality",
+      "Security & Scalability",
+      "Transparent Communication",
+      "Flexible Engagement Models",
+    ],
+    image: "/assets/home/our_process/process5.png",
+    imageAlt: "Leaders aligning on engagement success principles",
+  },
+  {
+    label: "Client Commitment",
+    subtitle: "Long-Term Success",
+    title: "Client Commitment: Focused on long-term customer success.",
+    description:
+      "Partnership does not end at go-live. We stay invested in operational efficiency, service quality, and relationships that compound value over time.",
+    points: [
+      "Quality Service Standards",
+      "Diverse Service Portfolio",
+      "Operational Efficiency",
+      "Strong Client Relationships",
+    ],
+    image: "/assets/home/our_process/process6.png",
+    imageAlt: "Client success teams supporting long-term partnership goals",
+  },
+  {
+    label: "Continuous Excellence",
+    subtitle: "Ongoing Improvement",
+    title:
+      "Continuous Excellence: Improving delivery through proven methodologies.",
+    description:
+      "Lean practices, Kaizen loops, and customer-centric refinements keep delivery sharp—so every release is better than the last.",
+    points: [
+      "Lean Six Sigma",
+      "Kaizen Principles",
+      "Continuous Improvement",
+      "Customer-Centric Delivery",
+    ],
+    image: "/assets/home/our_process/process7.png",
+    imageAlt: "Teams iterating on delivery excellence and process improvement",
   },
 ]
 
-// Innermost core colors vary slightly per screenshot
-const coreColors = ["#3b67ff", "#3b67ff", "#3b67ff", "#3b67ff", "#3b67ff"]
-const midColors  = ["#0d1e3c", "#0d1e3c", "#0d1e3c", "#0d1e3c", "#0d1e3c"]
-const ringColors = ["#1a3a6b", "#1a3a6b", "#0A3A73", "#1a3a6b", "#1e4480"]
-
 export function ProcessSection() {
-  const sectionRef    = useRef<HTMLDivElement>(null)
-  const headingRef    = useRef<HTMLDivElement>(null)
-  const lineRef       = useRef<HTMLDivElement>(null)
-  const circleRefs    = useRef<(HTMLDivElement | null)[]>([])
-  const connectorRefs = useRef<(HTMLDivElement | null)[]>([])
-  const descRefs      = useRef<(HTMLDivElement | null)[]>([])
+  const [activeIndex, setActiveIndex] = useState(0)
+  const sectionRef = useRef<HTMLElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  const active = phases[activeIndex]
+  const isLast = activeIndex === phases.length - 1
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-
-      // 1. Heading
       gsap.fromTo(
         headingRef.current,
-        { opacity: 0, y: 32 },
+        { opacity: 0, y: 28 },
         {
-          opacity: 1, y: 0, duration: 0.85, ease: "power3.out",
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
           scrollTrigger: { trigger: headingRef.current, start: "top 88%" },
         }
       )
-
-      // 2. Horizontal rule draws left → right
-      gsap.fromTo(
-        lineRef.current,
-        { scaleX: 0, transformOrigin: "left center" },
-        {
-          scaleX: 1, duration: 1.4, ease: "power2.inOut",
-          scrollTrigger: { trigger: lineRef.current, start: "top 82%" },
-        }
-      )
-
-      // 3. Circles scale in with stagger
-      circleRefs.current.forEach((el, i) => {
-        if (!el) return
-        gsap.fromTo(
-          el,
-          { opacity: 0, scale: 0.55 },
-          {
-            opacity: 1, scale: 1, duration: 0.75, ease: "back.out(1.7)",
-            delay: i * 0.13,
-            scrollTrigger: { trigger: el, start: "top 85%" },
-          }
-        )
-        // Idle float
-        gsap.to(el, {
-          y: -6, duration: 2.4 + i * 0.3, repeat: -1, yoyo: true,
-          ease: "sine.inOut", delay: i * 0.4,
-        })
-      })
-
-      // 4. Connectors grow down
-      connectorRefs.current.forEach((el, i) => {
-        if (!el) return
-        gsap.fromTo(
-          el,
-          { scaleY: 0, transformOrigin: "top center", opacity: 0 },
-          {
-            scaleY: 1, opacity: 1, duration: 0.55, ease: "power2.out",
-            delay: i * 0.13 + 0.35,
-            scrollTrigger: { trigger: el, start: "top 90%" },
-          }
-        )
-      })
-
-      // 5. Description paragraphs
-      descRefs.current.forEach((el, i) => {
-        if (!el) return
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 18 },
-          {
-            opacity: 1, y: 0, duration: 0.6, ease: "power2.out",
-            delay: i * 0.13 + 0.5,
-            scrollTrigger: { trigger: el, start: "top 92%" },
-          }
-        )
-      })
-
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
 
+  useEffect(() => {
+    if (!cardRef.current) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    gsap.fromTo(
+      cardRef.current,
+      { opacity: 0.55, y: 12 },
+      { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+    )
+  }, [activeIndex])
+
+  function goToNextPhase() {
+    setActiveIndex((index) => (index + 1) % phases.length)
+  }
+
   return (
     <section
       ref={sectionRef}
-      className="py-14 sm:py-20 lg:py-28 bg-[#f5f7fc] overflow-hidden"
+      className="overflow-hidden bg-[#f5f7fc] py-14 sm:py-20 lg:py-28"
     >
-      <div className="max-w-[1340px] mx-auto px-6 lg:px-12">
-
-        {/* ── SECTION HEADER ── */}
-        <div ref={headingRef} className="mb-12 lg:mb-20">
-          <span className="type-label font-semibold section-label-light mb-3 block">
+      <div className="mx-auto max-w-[1340px] px-6 lg:px-12">
+        <div ref={headingRef} className="mb-10 lg:mb-14">
+          <span className="type-label mb-3 block font-semibold section-label-light">
             Our Process
           </span>
-
-          <h2 className="type-heading mb-4 text-[#0d1e3c]">
-            HOW WE MAKE IT HAPPEN
+          <h2 className="type-heading mb-4 text-[#072448]">
+            How We Make It Happen
           </h2>
-          <p className="type-body text-[#4b5a72] max-w-[640px]">
-            A structured delivery lifecycle powered by industry-leading tools and validated by
-            global credentials.
+          <p className="type-body max-w-[640px] text-[#4b5a72]">
+            Our proven delivery framework combines people, processes,
+            technology, and continuous improvement to deliver measurable
+            business outcomes.
           </p>
         </div>
 
-        {/* ── DESKTOP ── */}
-        <div className="hidden lg:block">
-
-          {/* CIRCLES ROW */}
-          <div className="relative flex items-center justify-between gap-0">
-
-            {/* Horizontal connector line behind circles */}
+        <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(220px,0.32fr)_1fr] lg:gap-10 xl:gap-14">
+          {/* Vertical stepper — on desktop, stretches to match detail card height */}
+          <nav
+            aria-label="Delivery framework phases"
+            className="relative lg:flex lg:h-full lg:min-h-0"
+          >
             <div
-              ref={lineRef}
-              className="absolute top-1/2 left-[calc(9%+10px)] right-[calc(9%+10px)] -translate-y-1/2 h-[1px] z-0"
-              style={{ background: "linear-gradient(90deg, #c8d8f8 0%, #3b67ff55 50%, #c8d8f8 100%)" }}
+              className="absolute bottom-3 left-[1.125rem] top-3 w-px bg-[#d7e0ee] lg:bottom-5 lg:top-5"
+              aria-hidden
             />
+            <ol className="relative space-y-1 lg:flex lg:h-full lg:w-full lg:flex-col lg:justify-between lg:space-y-0 lg:py-1">
+              {phases.map((phase, index) => {
+                const isActive = index === activeIndex
+                const number = String(index + 1).padStart(2, "0")
 
-            {steps.map((step, i) => (
-              <div
-                key={i}
-                ref={(el) => { circleRefs.current[i] = el }}
-                className="relative z-10"
-                style={{ width: "18.5%", aspectRatio: "1/1" }}
-              >
-                <ConcentricCircle title={step.title} index={i} />
-              </div>
-            ))}
-          </div>
-
-          {/* CONNECTOR + BADGE + DESCRIPTION ROW */}
-          <div className="flex justify-between mt-0">
-            {steps.map((step, i) => {
-              const isOdd = step.descRow === "odd"
-              return (
-                <div
-                  key={i}
-                  className="flex flex-col items-center"
-                  style={{ width: "18.5%" }}
-                >
-                  {/* Connector stem */}
-                  <div
-                    ref={(el) => { connectorRefs.current[i] = el }}
-                    className="flex flex-col items-center"
-                  >
-                    <div
-                      className="w-px"
-                      style={{
-                        height: isOdd ? "16px" : "132px",
-                        background: "linear-gradient(180deg, #3b67ff60, #3b67ff30)",
-                      }}
-                    />
-
-                    {/* Number badge */}
-                    <div
-                      className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 z-10"
-                      style={{
-                        background: "#0A3A73",
-                        border: "3px solid #fff",
-                        boxShadow: "0 4px 16px rgba(59,103,255,0.38)",
-                      }}
+                return (
+                  <li
+                    key={phase.label}
+                    className="lg:flex lg:min-h-0 lg:flex-1 lg:items-center"
+                  >                    <button
+                      type="button"
+                      onClick={() => setActiveIndex(index)}
+                      aria-current={isActive ? "step" : undefined}
+                      className={`group flex w-full items-start gap-4 rounded-xl px-1 py-1.5 text-left transition-colors ${
+                        isActive ? "" : "hover:bg-white/60"
+                      }`}
                     >
-                      <span className="text-white text-[13px] font-bold leading-none">{step.step}</span>
-                    </div>
+                      <span
+                        className={`relative z-10 flex size-9 shrink-0 items-center justify-center rounded-full text-[12px] font-bold transition-colors ${
+                          isActive
+                            ? "bg-[#072448] text-white shadow-[0_8px_20px_rgba(7,36,72,0.28)]"
+                            : "bg-[#e8eef8] text-[#64748b] group-hover:bg-[#dce6f5]"
+                        }`}
+                      >
+                        {number}
+                      </span>
+                      <span className="min-w-0 pt-1">
+                        <span
+                          className={`block text-[15px] leading-snug transition-colors ${
+                            isActive
+                              ? "font-bold text-[#072448]"
+                              : "font-medium text-[#64748b]"
+                          }`}
+                        >
+                          {phase.label}
+                        </span>
+                        {isActive ? (
+                          <span className="mt-0.5 block text-sm text-[#64748b]">
+                            {phase.subtitle}
+                          </span>
+                        ) : null}
+                      </span>
+                    </button>
+                  </li>
+                )
+              })}
+            </ol>
+          </nav>
 
-                    <div
-                      className="w-px"
-                      style={{
-                        height: isOdd ? "44px" : "20px",
-                        background: "linear-gradient(180deg, #3b67ff30, #3b67ff60)",
-                      }}
-                    />
+          {/* Detail card */}
+          <div
+            ref={cardRef}
+            className="rounded-[1.75rem] border border-[#e2e8f0] bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)] sm:p-8 lg:p-10"
+          >
+            <div className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.14em] text-[#64748b]">
+              <span className="inline-flex size-7 items-center justify-center rounded-md border border-[#d7e0ee] bg-[#f8fafc] text-[11px] text-[#072448]">
+                {String(activeIndex + 1).padStart(2, "0")}
+              </span>
+              <span className="h-px w-6 bg-[#cbd5e1]" aria-hidden />
+              <span>PHASE {PHASE_WORDS[activeIndex]}</span>
+            </div>
 
-                    {/* Arrow */}
-                    <svg width="10" height="7" viewBox="0 0 10 7">
-                      <path d="M5 7L0.5 0.5h9L5 7z" fill="#3b67ff" opacity="0.45"/>
-                    </svg>
-                  </div>
+            <div className="mt-5 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+              <div>
+                <h3 className="text-balance text-2xl font-bold leading-snug tracking-tight text-[#072448] sm:text-[1.75rem]">
+                  {active.title}
+                </h3>
+                <p className="mt-4 text-[15px] leading-7 text-[#64748b]">
+                  {active.description}
+                </p>
 
-                  {/* Description */}
-                  <div
-                    ref={(el) => { descRefs.current[i] = el }}
-                    className="mt-4 text-center text-[#4b5a72] leading-[1.72] px-1"
-                    style={{ fontSize: "clamp(12px, 1vw, 13.5px)" }}
-                  >
-                    {step.description}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-
-        {/* ── MOBILE / TABLET ── */}
-        <div className="lg:hidden space-y-10">
-          {steps.map((step, i) => (
-            <div key={i} className="flex gap-5">
-              {/* Left track */}
-              <div className="flex flex-col items-center shrink-0">
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
-                  style={{
-                    background: "#3b67ff",
-                    border: "3px solid #fff",
-                    boxShadow: "0 4px 14px rgba(59,103,255,0.35)",
-                  }}
-                >
-                  <span className="text-white text-[13px] font-bold">{step.step}</span>
-                </div>
-                {i < steps.length - 1 && (
-                  <div className="w-px flex-1 mt-2" style={{ background: "linear-gradient(#3b67ff40,#3b67ff10)", minHeight: 48 }} />
-                )}
+                <ul className="mt-6 space-y-3">
+                  {active.points.map((point) => (
+                    <li
+                      key={point}
+                      className="flex items-center gap-3 text-[15px] font-medium text-[#334155]"
+                    >
+                      <span className="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-[#eef3fb] text-[#072448]">
+                        <Check className="size-3.5" strokeWidth={2.4} aria-hidden />
+                      </span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              {/* Right content */}
-              <div className="flex-1 pb-2">
-                <div className="w-[130px] h-[130px] sm:w-[160px] sm:h-[160px] mb-4">
-                  <ConcentricCircle title={step.title} index={i} />
-                </div>
-                <p className="type-body text-[#4b5a72]">
-                  {step.description}
-                </p>
+              <div className="relative mx-auto aspect-square w-full max-w-[280px] overflow-hidden rounded-2xl bg-[#e8edf3] lg:mx-0 lg:max-w-none">
+                <Image
+                  src={active.image}
+                  alt={active.imageAlt}
+                  fill
+                  sizes="(max-width: 1024px) 280px, 320px"
+                  className="object-cover object-center"
+                />
               </div>
             </div>
-          ))}
-        </div>
 
+            <div className="mt-8 flex items-center justify-between border-t border-[#e8eef5] pt-6">
+              <button
+                type="button"
+                onClick={goToNextPhase}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#072448] transition-colors hover:text-[#0a3a73]"
+              >
+                {isLast ? "Back to Phase One" : "Next Phase"}
+                <ArrowRight className="size-4" aria-hidden />
+              </button>
+              <span className="text-xs font-medium text-[#94a3b8]">
+                {String(activeIndex + 1).padStart(2, "0")} / 07
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-  )
-}
-
-/* ─────────────────────────────────────────────
-   Concentric circle component
-   4 rings: outermost transparent border ring,
-   dark navy ring, medium navy ring, bright blue core
-───────────────────────────────────────────── */
-function ConcentricCircle({ title, index }: { title: string; index: number }) {
-  return (
-    <div className="relative w-full h-full" style={{ aspectRatio: "1/1" }}>
-
-      {/* Ring 1 – outermost: transparent bg, thin light border */}
-      <div
-        className="absolute inset-0 rounded-full"
-        style={{ border: "1.5px solid #c3d4f0", background: "transparent" }}
-      />
-
-      {/* Ring 2 – dark navy (82% inset) */}
-      <div
-        className="absolute rounded-full"
-        style={{ inset: "8%", background: midColors[index] }}
-      />
-
-      {/* Ring 3 – mid navy ring visible as a lighter band (18% inset) */}
-      <div
-        className="absolute rounded-full"
-        style={{ inset: "18%", background: ringColors[index] }}
-      />
-
-      {/* Ring 4 – bright blue core with text (28% inset) */}
-      <div
-        className="absolute rounded-full flex items-center justify-center"
-        style={{ inset: "28%" }}
-      >
-        <span
-          className="text-white font-extrabold text-center leading-[1.25] tracking-wide uppercase"
-          style={{
-            fontSize: "clamp(8px, 1.05vw, 13px)",
-            whiteSpace: "pre-line",
-            padding: "0 8%",
-          }}
-        >
-          {title}
-        </span>
-      </div>
-    </div>
   )
 }

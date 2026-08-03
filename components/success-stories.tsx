@@ -38,7 +38,7 @@ export function SuccessStories() {
                   src={item.image}
                   alt={item.imageAlt}
                   fill
-                  className="object-cover"
+                  className="object-fill"
                 />
               </Link>
 
