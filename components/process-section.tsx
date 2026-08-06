@@ -7,13 +7,13 @@ import { ArrowRight, Check } from "lucide-react"
 import { gsap } from "@/lib/gsap"
 
 const PHASE_WORDS = [
-  "ONE",
-  "TWO",
-  "THREE",
-  "FOUR",
-  "FIVE",
-  "SIX",
-  "SEVEN",
+  "ASSESS",
+  "PLAN",
+  "ARCHITECT",
+  "BUILD",
+  "AUTOMATE",
+  "LAUNCH",
+  "OPTIMIZE",
 ] as const
 
 const phases = [
@@ -22,7 +22,7 @@ const phases = [
     subtitle: "Foundational Discovery",
     title: "Our Approach: Understanding your business before building solutions.",
     description:
-      "We begin every engagement by studying your goals, operating constraints, and success metrics—so the delivery plan is grounded in real business context, not assumptions.",
+      "We initiate every partnership with a deep-dive immersion into your operational DNA, identifying friction points and growth levers before any solution is proposed.",
     points: [
       "Requirement Engagement",
       "Client Onboarding",
@@ -37,7 +37,7 @@ const phases = [
     subtitle: "Structured Execution",
     title: "Process Management: Structured execution with complete visibility.",
     description:
-      "Clear ownership, service levels, and real-time reporting keep every milestone transparent—so stakeholders always know status, risks, and next actions.",
+      "Every engagement is governed by clear operating procedures, service levels, and real-time collaboration channels that keep stakeholders aligned from day one.",
     points: [
       "Service Level Setup",
       "SOPs & Framework",
@@ -48,12 +48,12 @@ const phases = [
     imageAlt: "Project leads reviewing execution dashboards and timelines",
   },
   {
-    label: "Quality Process",
+    label: "Quality Assurance",
     subtitle: "Lifecycle Consistency",
     title:
-      "Quality Process: Delivering consistent quality throughout the project lifecycle.",
+      "Quality Assurance: Delivering consistent quality throughout the project lifecycle.",
     description:
-      "Quality is built into every stage—reviews, feedback loops, and continuous improvement practices that protect outcomes from kickoff through release.",
+      "Rigorous audits, continuous feedback loops, and proactive process improvement ensure that quality is engineered into every stage of delivery.",
     points: [
       "Audits & Reviews",
       "Process Improvement",
@@ -69,12 +69,12 @@ const phases = [
     title:
       "Technology Enablement: Building delivery with modern engineering practices.",
     description:
-      "We equip delivery with the right talent, tooling, and transition models—so architecture, development, and operations stay aligned as the product scales.",
+      "We embed the right tools, platforms, and automation into your delivery model so teams can scale without sacrificing precision or speed.",
     points: [
-      "Resource Process",
-      "Talent Process",
-      "Transition Process",
-      "Quality Process",
+      "AI-Assisted Development",
+      "Platform Engineering",
+      "CI/CD Automation",
+      "Observability & Monitoring",
     ],
     image: "/assets/our_process/process4.png",
     imageAlt: "Engineering team enabling modern delivery systems",
@@ -85,7 +85,7 @@ const phases = [
     title:
       "Key Success Factors: The principles behind every successful engagement.",
     description:
-      "Time, cost, quality, security, and communication stay balanced through flexible engagement models designed for predictable, high-trust delivery.",
+      "Successful delivery is built on transparent communication, flexible engagement models, and an uncompromising focus on time, cost, and quality.",
     points: [
       "Time, Cost & Quality",
       "Security & Scalability",
@@ -100,7 +100,7 @@ const phases = [
     subtitle: "Long-Term Success",
     title: "Client Commitment: Focused on long-term customer success.",
     description:
-      "Partnership does not end at go-live. We stay invested in operational efficiency, service quality, and relationships that compound value over time.",
+      "We measure success by the strength of our client relationships, the efficiency of operations, and the consistency of our service standards.",
     points: [
       "Quality Service Standards",
       "Diverse Service Portfolio",
@@ -116,7 +116,7 @@ const phases = [
     title:
       "Continuous Excellence: Improving delivery through proven methodologies.",
     description:
-      "Lean practices, Kaizen loops, and customer-centric refinements keep delivery sharp—so every release is better than the last.",
+      "Our culture of continuous improvement leverages Lean Six Sigma, Kaizen principles, and customer-centric delivery to raise the bar over time.",
     points: [
       "Lean Six Sigma",
       "Kaizen Principles",
