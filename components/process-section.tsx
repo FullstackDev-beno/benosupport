@@ -7,19 +7,19 @@ import { ArrowRight, Check } from "lucide-react"
 import { gsap } from "@/lib/gsap"
 
 const PHASE_WORDS = [
-  "ONE",
-  "TWO",
-  "THREE",
-  "FOUR",
-  "FIVE",
-  "SIX",
-  "SEVEN",
+  "ASSESS",
+  "PLAN",
+  "ARCHITECT",
+  "BUILD",
+  "AUTOMATE",
+  "LAUNCH",
+  "OPTIMIZE",
 ] as const
 
 const phases = [
   {
     label: "Our Approach",
-    subtitle: "Assess",
+    subtitle: "Foundational Discovery",
     title: "Our Approach: Understanding your business before building solutions.",
     description:
       "We initiate every partnership with a deep-dive immersion into your operational DNA, identifying friction points and growth levers before any solution is proposed.",
@@ -34,7 +34,7 @@ const phases = [
   },
   {
     label: "Process Management",
-    subtitle: "Plan",
+    subtitle: "Structured Execution",
     title: "Process Management: Structured execution with complete visibility.",
     description:
       "Every engagement is governed by clear operating procedures, service levels, and real-time collaboration channels that keep stakeholders aligned from day one.",
@@ -49,7 +49,7 @@ const phases = [
   },
   {
     label: "Quality Assurance",
-    subtitle: "Architect",
+    subtitle: "Lifecycle Consistency",
     title:
       "Quality Assurance: Delivering consistent quality throughout the project lifecycle.",
     description:
@@ -65,7 +65,7 @@ const phases = [
   },
   {
     label: "Technology Enablement",
-    subtitle: "Build",
+    subtitle: "Modern Engineering",
     title:
       "Technology Enablement: Building delivery with modern engineering practices.",
     description:
@@ -81,7 +81,7 @@ const phases = [
   },
   {
     label: "Key Success Factors",
-    subtitle: "Automate",
+    subtitle: "Engagement Principles",
     title:
       "Key Success Factors: The principles behind every successful engagement.",
     description:
@@ -97,7 +97,7 @@ const phases = [
   },
   {
     label: "Client Commitment",
-    subtitle: "Launch",
+    subtitle: "Long-Term Success",
     title: "Client Commitment: Focused on long-term customer success.",
     description:
       "We measure success by the strength of our client relationships, the efficiency of operations, and the consistency of our service standards.",
@@ -112,7 +112,7 @@ const phases = [
   },
   {
     label: "Continuous Excellence",
-    subtitle: "Optimize",
+    subtitle: "Ongoing Improvement",
     title:
       "Continuous Excellence: Improving delivery through proven methodologies.",
     description:
