@@ -779,10 +779,11 @@ const EDTECH_DETAIL: UseCaseDetail = {
   listingTag: "EdTech · AI",
   hero: {
     tag: "Use Case",
-    title: "The Future of EdTech: 8 AI Use Cases Changing Digital Learning",
+    title:
+      "The EdTech Automation Playbook: 8 AI Use Cases for Modern Institutions",
     titleLines: [
-      "The Future of EdTech:",
-      "8 AI Use Cases Changing Digital Learning",
+      "The EdTech Automation Playbook:",
+      "8 AI Use Cases for Modern Institutions",
     ],
     subtitle:
       "From AI-powered learning platforms to intelligent campus management, discover the real-world AI applications helping EdTech organizations deliver smarter, faster, and more engaging learning experiences.",
@@ -950,10 +951,10 @@ const AVIATION_DETAIL: UseCaseDetail = {
   hero: {
     tag: "Use Case",
     title:
-      "The Future of Aviation Is Here: 8 AI Use Cases Driving Smarter Operations",
+      "From Bookings to Black Boxes: 8 AI Use Cases Transforming Aviation",
     titleLines: [
-      "The Future of Aviation Is Here:",
-      "8 AI Use Cases Driving Smarter Operations",
+      "From Bookings to Black Boxes:",
+      "8 AI Use Cases Transforming Aviation",
     ],
     subtitle:
       "From airline reservations and airport operations to predictive maintenance and safety compliance, discover the real-world AI applications helping aviation organizations operate smarter, safer, and more efficiently.",
@@ -1293,10 +1294,10 @@ const TELECOM_DETAIL: UseCaseDetail = {
   hero: {
     tag: "Use Case",
     title:
-      "The Future of Telecom Is Here: 8 Agentic AI Use Cases You Should Know",
+      "How Telecom Operators Are Deploying Agentic AI: 8 Use Cases",
     titleLines: [
-      "The Future of Telecom Is Here:",
-      "8 Agentic AI Use Cases You Should Know",
+      "How Telecom Operators Are Deploying Agentic AI:",
+      "8 Use Cases",
     ],
     subtitle:
       "Learn how Agentic AI is enabling smarter networks, proactive maintenance, intelligent customer service, and data-driven decision-making across the telecom industry.",
@@ -1465,10 +1466,10 @@ const HOSPITALITY_DETAIL: UseCaseDetail = {
   hero: {
     tag: "Use Case",
     title:
-      "The Future of Hospitality Is Here: 8 Agentic AI Use Cases You Should Know",
+      "From Check-In to Checkout: 8 Agentic AI Use Cases in Hospitality",
     titleLines: [
-      "The Future of Hospitality Is Here:",
-      "8 Agentic AI Use Cases You Should Know",
+      "From Check-In to Checkout:",
+      "8 Agentic AI Use Cases in Hospitality",
     ],
     subtitle:
       "Learn how Agentic AI is enhancing every stage of the guest journey—from reservations and concierge services to housekeeping, pricing, and customer engagement.",
