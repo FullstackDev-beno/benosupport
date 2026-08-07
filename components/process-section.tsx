@@ -30,7 +30,7 @@ const phases = [
       "Relationship Management",
     ],
     image: "/assets/our_process/process1.png",
-    imageAlt: "Beno Support team collaborating during discovery workshops",
+    imageAlt: "Beno Support team collaborating during discovery workshop",
   },
   {
     label: "Process Management",
