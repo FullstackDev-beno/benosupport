@@ -20,7 +20,7 @@ const phases = [
   {
     label: "Our Approach",
     subtitle: "Foundational Discovery",
-    title: "Our Approach: Understanding your business before building solutions.",
+    title: "Understanding your business before building solutions.",
     description:
       "We initiate every partnership with a deep-dive immersion into your operational DNA, identifying friction points and growth levers before any solution is proposed.",
     points: [
@@ -35,7 +35,7 @@ const phases = [
   {
     label: "Process Management",
     subtitle: "Structured Execution",
-    title: "Process Management: Structured execution with complete visibility.",
+    title: "Structured execution with complete visibility.",
     description:
       "Every engagement is governed by clear operating procedures, service levels, and real-time collaboration channels that keep stakeholders aligned from day one.",
     points: [
@@ -51,7 +51,7 @@ const phases = [
     label: "Quality Assurance",
     subtitle: "Lifecycle Consistency",
     title:
-      "Quality Assurance: Delivering consistent quality throughout the project lifecycle.",
+      "Delivering consistent quality throughout the project lifecycle.",
     description:
       "Rigorous audits, continuous feedback loops, and proactive process improvement ensure that quality is engineered into every stage of delivery.",
     points: [
@@ -67,7 +67,7 @@ const phases = [
     label: "Technology Enablement",
     subtitle: "Modern Engineering",
     title:
-      "Technology Enablement: Building delivery with modern engineering practices.",
+      "Building delivery with modern engineering practices.",
     description:
       "We embed the right tools, platforms, and automation into your delivery model so teams can scale without sacrificing precision or speed.",
     points: [
@@ -83,7 +83,7 @@ const phases = [
     label: "Key Success Factors",
     subtitle: "Engagement Principles",
     title:
-      "Key Success Factors: The principles behind every successful engagement.",
+      "The principles behind every successful engagement.",
     description:
       "Successful delivery is built on transparent communication, flexible engagement models, and an uncompromising focus on time, cost, and quality.",
     points: [
@@ -98,7 +98,7 @@ const phases = [
   {
     label: "Client Commitment",
     subtitle: "Long-Term Success",
-    title: "Client Commitment: Focused on long-term customer success.",
+    title: "Focused on long-term customer success.",
     description:
       "We measure success by the strength of our client relationships, the efficiency of operations, and the consistency of our service standards.",
     points: [
@@ -114,7 +114,7 @@ const phases = [
     label: "Continuous Excellence",
     subtitle: "Ongoing Improvement",
     title:
-      "Continuous Excellence: Improving delivery through proven methodologies.",
+      "Improving delivery through proven methodologies.",
     description:
       "Our culture of continuous improvement leverages Lean Six Sigma, Kaizen principles, and customer-centric delivery to raise the bar over time.",
     points: [
@@ -259,7 +259,7 @@ export function ProcessSection() {
                 {String(activeIndex + 1).padStart(2, "0")}
               </span>
               <span className="h-px w-6 bg-[#cbd5e1]" aria-hidden />
-              <span>PHASE {PHASE_WORDS[activeIndex]}</span>
+              <span>{PHASE_WORDS[activeIndex]}</span>
             </div>
 
             <div className="mt-5 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
