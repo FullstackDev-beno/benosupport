@@ -22,7 +22,7 @@ const phases = [
     subtitle: "Foundational Discovery",
     title: "Understanding your business before building solutions.",
     description:
-      "We initiate every partnership with a deep-dive immersion into your operational DNA, identifying friction points and growth levers before any solution is proposed.",
+      "We initiate every partnership with a deep-dive immersion into your operational DNA,i dentifying friction points and growth levers before any solution is proposed.",
     points: [
       "Requirement Engagement",
       "Client Onboarding",
@@ -30,7 +30,7 @@ const phases = [
       "Relationship Management",
     ],
     image: "/assets/our_process/process1.png",
-    imageAlt: "Beno Support team collaborating during discovery workshops",
+    imageAlt: "Beno Support team collaborating during discovery workshop",
   },
   {
     label: "Process Management",
