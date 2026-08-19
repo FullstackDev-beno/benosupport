@@ -220,7 +220,7 @@ export function ProcessSection() {
                       <span
                         className={`relative z-10 flex size-9 shrink-0 items-center justify-center rounded-full text-[12px] font-bold transition-colors ${
                           isActive
-                            ? "bg-[#072448] text-white shadow-[0_8px_20px_rgba(7,36,72,0.28)]"
+                            ? "bg-[#072448] text-white shadow-[0_8px_16px_-4px_rgba(7,36,72,0.35)]"
                             : "bg-[#e8eef8] text-[#64748b] group-hover:bg-[#dce6f5]"
                         }`}
                       >
