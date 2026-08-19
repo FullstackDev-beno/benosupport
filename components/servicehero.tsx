@@ -4,8 +4,7 @@ import { useEffect, useRef } from "react"
 import Link from "next/link"
 import gsap from "gsap"
 import type { ServiceData } from "@/lib/services-data"
-import { getCtaButtonProps } from "@/lib/proposal-cta"
-import { useProposalModal } from "@/hooks/use-proposal-modal"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import { prepareHeadingWordAnimation } from "@/lib/prepare-heading-word-animation"
 import { PageBreadcrumb } from "@/components/page-breadcrumb"
 import type { BreadcrumbItem } from "@/lib/breadcrumbs"
@@ -19,7 +18,6 @@ function ServiceHero({
   slug: string
   breadcrumbItems: BreadcrumbItem[]
 }) {
-  const { openProposalModal } = useProposalModal()
   const heroRef = useRef<HTMLElement>(null)
   const line1Ref = useRef<HTMLSpanElement>(null)
   const line2Ref = useRef<HTMLSpanElement>(null)
@@ -27,11 +25,6 @@ function ServiceHero({
   const subtitleRef = useRef<HTMLParagraphElement>(null)
   const heroBtnsRef = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
-
-  const primaryCtaLabel = hero.ctaButtons?.[0] ?? "Request A Proposal"
-  const secondaryCtaLabel = hero.ctaButtons?.[1] ?? "Talk To Our Experts"
-  const primaryCtaProps = getCtaButtonProps(primaryCtaLabel, openProposalModal)
-  const secondaryCtaProps = getCtaButtonProps(secondaryCtaLabel, openProposalModal)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -161,38 +154,14 @@ function ServiceHero({
           </p>
 
           <div ref={heroBtnsRef} className="flex flex-wrap gap-4">
-            {primaryCtaProps.href ? (
-              <Link
-                href={primaryCtaProps.href}
-                className="rounded-lg bg-[#0A3A73] px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-[#124e96]"
-              >
-                {primaryCtaLabel}
-              </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={primaryCtaProps.onClick}
-                className="rounded-lg bg-[#0A3A73] px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-[#124e96]"
-              >
-                {primaryCtaLabel}
-              </button>
-            )}
-            {secondaryCtaProps.href ? (
-              <Link
-                href={secondaryCtaProps.href}
-                className="rounded-lg border border-white/30 px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-white/10"
-              >
-                {secondaryCtaLabel}
-              </Link>
-            ) : (
-              <button
-                type="button"
-                onClick={secondaryCtaProps.onClick}
-                className="rounded-lg border border-white/30 px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-white/10"
-              >
-                {secondaryCtaLabel}
-              </button>
-            )}
+            <Link
+              href={TALK_TO_EXPERT_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg bg-[#0A3A73] px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-[#124e96]"
+            >
+              Talk To Our Experts
+            </Link>
           </div>
         </div>
       </div>

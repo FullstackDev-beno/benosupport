@@ -18,11 +18,10 @@ import { INDUSTRY_GRID_ITEMS } from "@/lib/industries-grid-data"
 import IndustriesHero from "./component/hero"
 import BusinessOutcomes from "./component/outcomeMetrix"
 import {
-  PageCTAOutlineButton,
   PageCTAPrimaryButton,
   PageCTASection,
 } from "@/components/page-cta"
-import { useProposalModal } from "@/hooks/use-proposal-modal"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import Image from "next/image"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -1082,7 +1081,6 @@ function IndustriesFAQ() {
 // ─────────────────────────────────────────────────────────────────
 
 function IndustriesCTA() {
-  const { openProposalModal } = useProposalModal()
   const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -1108,12 +1106,9 @@ function IndustriesCTA() {
         AI-powered transformation tailored to your industry&apos;s unique challenges.
       </p>
       <div className="cta-el mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row" style={{ opacity: 0 }}>
-        <PageCTAPrimaryButton onClick={openProposalModal}>
-          Request a Proposal
+        <PageCTAPrimaryButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
+          Talk To Our Experts
         </PageCTAPrimaryButton>
-        <PageCTAOutlineButton onClick={openProposalModal}>
-          Schedule a Consultation
-        </PageCTAOutlineButton>
       </div>
     </PageCTASection>
   )

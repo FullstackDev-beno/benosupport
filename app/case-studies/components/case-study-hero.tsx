@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { PageBreadcrumb } from "@/components/page-breadcrumb"
 import { withHome } from "@/lib/breadcrumbs"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import type { CaseStudyDetail } from "@/lib/case-studies-data"
 
 export function CaseStudyHero({ detail }: { detail: CaseStudyDetail }) {
@@ -40,10 +41,12 @@ export function CaseStudyHero({ detail }: { detail: CaseStudyDetail }) {
               <div className="mt-8 flex flex-wrap gap-3">
                 {detail.hero.primaryCta ? (
                   <Link
-                    href={detail.hero.primaryCta.href}
+                    href={TALK_TO_EXPERT_HREF}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-xl bg-[#072448] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#0a3a73]"
                   >
-                    {detail.hero.primaryCta.label}
+                    Talk To Our Experts
                   </Link>
                 ) : null}
                 {detail.hero.secondaryCta ? (
@@ -87,10 +90,12 @@ export function CaseStudyHero({ detail }: { detail: CaseStudyDetail }) {
               <div className="mt-8 flex flex-wrap gap-3">
                 {detail.hero.primaryCta ? (
                   <Link
-                    href={detail.hero.primaryCta.href}
+                    href={TALK_TO_EXPERT_HREF}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-xl bg-[#072448] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#0a3a73]"
                   >
-                    {detail.hero.primaryCta.label}
+                    Talk To Our Experts
                   </Link>
                 ) : null}
                 {detail.hero.secondaryCta ? (

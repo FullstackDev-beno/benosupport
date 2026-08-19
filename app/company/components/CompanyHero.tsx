@@ -2,9 +2,9 @@
 
 import { useRef, useEffect } from "react"
 import Link from "next/link"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import gsap from "gsap"
 import SocialSidebar from "@/components/social-sidebar"
-import { CONTACT_GET_IN_TOUCH_HREF } from "@/lib/proposal-cta"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { PageBreadcrumb } from "@/components/page-breadcrumb"
 import { withHome } from "@/lib/breadcrumbs"
@@ -56,10 +56,12 @@ export default function CompanyHero() {
 
           <div data-anim className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href={CONTACT_GET_IN_TOUCH_HREF}
+              href={TALK_TO_EXPERT_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-lg bg-[#0A3A73] px-7 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-[#124e96]"
             >
-              Talk to Our Experts
+              Talk To Our Experts
             </Link>
             <Link
               href="/services"

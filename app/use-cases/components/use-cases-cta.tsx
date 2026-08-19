@@ -2,7 +2,7 @@ import {
   PageCTAPrimaryButton,
   PageCTASection,
 } from "@/components/page-cta"
-import { CONTACT_GET_IN_TOUCH_HREF } from "@/lib/proposal-cta"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 
 export default function UseCasesCta({
   title,
@@ -22,8 +22,8 @@ export default function UseCasesCta({
         {description}
       </p>
       <div className="mt-8 flex justify-center">
-        <PageCTAPrimaryButton href={CONTACT_GET_IN_TOUCH_HREF}>
-          {buttonLabel}
+        <PageCTAPrimaryButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
+          Talk To Our Experts
         </PageCTAPrimaryButton>
       </div>
     </PageCTASection>

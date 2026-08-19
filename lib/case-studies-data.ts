@@ -287,7 +287,7 @@ const BIHAR_TOURISM_DETAIL: CaseStudyDetail = {
     title: "Let's Build Your Digital Transformation Blueprint",
     description:
       "We turn complex organizational hurdles into scalable, enterprise-grade digital realities. Whether you are revitalizing a public platform, deploying cloud infrastructure, or redesigning your customer journey, our team can help deliver measurable results.",
-    buttonLabel: "Let's Talk Strategy",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -309,7 +309,7 @@ const NOIDA_WATER_BILLING_DETAIL: CaseStudyDetail = {
     imageAlt:
       "NOIDA Authority complex illuminated at night along a busy urban corridor",
     primaryCta: {
-      label: "Book a Free Consultation",
+      label: "Talk To Our Experts",
       href: "/contact#contact-form",
     },
   },
@@ -525,7 +525,7 @@ const NOIDA_WATER_BILLING_DETAIL: CaseStudyDetail = {
     title: "Let's Build Your Digital Transformation Blueprint",
     description:
       "At Benosupport Technologies, we turn complex organizational hurdles into scalable, enterprise-grade digital realities. Whether you are looking to revitalize a public platform, seamlessly deploy robust infrastructure, or completely redesign your customer journey, we have the proven expertise to deliver high-impact results.",
-    buttonLabel: "Let's Talk Strategy",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -547,7 +547,7 @@ const WARS_LAB_DETAIL: CaseStudyDetail = {
     imageAlt:
       "Professional holding a tablet with a double-exposure city skyline overlay",
     primaryCta: {
-      label: "Book a Free Consultation",
+      label: "Talk To Our Experts",
       href: "/contact#contact-form",
     },
   },
@@ -745,7 +745,7 @@ const WARS_LAB_DETAIL: CaseStudyDetail = {
     title: "Let's Build Your Digital Transformation Blueprint",
     description:
       "At Benosupport Technologies, we turn complex organizational hurdles into scalable, enterprise-grade digital realities. Whether you are looking to revitalize a public platform, seamlessly deploy robust infrastructure, or completely redesign your customer journey, we have the proven expertise to deliver high-impact results.",
-    buttonLabel: "Let's Talk Strategy",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -766,7 +766,7 @@ const ROTA_LEGAL_DETAIL: CaseStudyDetail = {
     imageAlt:
       "Night highway traffic with LPR camera scanning vehicles highlighted in cyan wireframes",
     primaryCta: {
-      label: "Book a Free Consultation",
+      label: "Talk To Our Experts",
       href: "/contact#contact-form",
     },
   },
@@ -957,7 +957,7 @@ const ROTA_LEGAL_DETAIL: CaseStudyDetail = {
     title: "Let's Build Your Digital Transformation Blueprint",
     description:
       "Whether you're revitalizing a public platform, deploying robust infrastructure, or redesigning your customer journey — Beno Support Technologies delivers high-impact results.",
-    buttonLabel: "Let's Talk Strategy",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 

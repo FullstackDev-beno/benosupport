@@ -255,7 +255,7 @@ const FINTECH_DETAIL: UseCaseDetail = {
     title: "Ready to Modernize Your Financial Operations with AI?",
     description:
       "Whether you're exploring intelligent automation, modernizing legacy financial systems, or deploying AI-powered customer experiences, our team can help you identify the right use cases and build a roadmap tailored to your business.",
-    buttonLabel: "Talk to Our Experts",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -428,7 +428,7 @@ const HEALTHCARE_DETAIL: UseCaseDetail = {
     title: "Ready to Build AI Solutions for Healthcare?",
     description:
       "Whether you're modernizing legacy healthcare systems, improving operational efficiency, or building AI-powered digital health platforms, Beno Support helps healthcare organizations implement secure, scalable, and compliant AI solutions tailored to real business challenges.",
-    buttonLabel: "Talk to Our Experts",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -599,7 +599,7 @@ const IT_SAAS_DETAIL: UseCaseDetail = {
     title: "Ready to Build AI-Powered SaaS Products?",
     description:
       "Whether you're launching a new SaaS platform, modernizing an existing application, or embedding AI into your software, Beno Support helps businesses design, build, and scale intelligent digital products tailored to real business goals.",
-    buttonLabel: "Talk to Our Experts",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -770,7 +770,7 @@ const ECOMMERCE_DETAIL: UseCaseDetail = {
     title: "Ready to Build AI Solutions for E-commerce?",
     description:
       "Whether you're launching a new online store, modernizing your e-commerce platform, or building AI-powered retail experiences, Beno Support helps businesses develop secure, scalable, and intelligent e-commerce solutions tailored to real business needs.",
-    buttonLabel: "Talk to Our Experts",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -941,7 +941,7 @@ const EDTECH_DETAIL: UseCaseDetail = {
     title: "Ready to Build AI Solutions for Education?",
     description:
       "Whether you're modernizing educational platforms, building AI-powered learning experiences, improving campus operations, or developing next-generation EdTech solutions, Beno Support helps educational institutions and EdTech companies implement secure, scalable, and intelligent AI solutions tailored to real business challenges.",
-    buttonLabel: "Talk to Our Experts",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -1112,7 +1112,7 @@ const AVIATION_DETAIL: UseCaseDetail = {
     title: "Ready to Build AI Solutions for Aviation?",
     description:
       "Whether you're modernizing airline operations, improving airport efficiency, optimizing maintenance workflows, or building AI-powered aviation platforms, Beno Support helps aviation organizations implement secure, scalable, and intelligent solutions tailored to real operational challenges.",
-    buttonLabel: "Talk to Our Experts",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -1284,7 +1284,7 @@ const GAMING_DETAIL: UseCaseDetail = {
     title: "Ready to Build AI Solutions for Gaming?",
     description:
       "Whether you're developing the next hit game, modernizing multiplayer infrastructure, improving LiveOps, or creating AI-powered gaming experiences, Beno Support helps gaming companies build secure, scalable, and intelligent Agentic AI solutions tailored to real business needs.",
-    buttonLabel: "Talk to Our Experts",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -1456,7 +1456,7 @@ const TELECOM_DETAIL: UseCaseDetail = {
     title: "Ready to Build AI Solutions for Telecom?",
     description:
       "Whether you're modernizing network infrastructure, improving customer experiences, optimizing operations, or building AI-powered telecom platforms, Beno Support helps telecom companies implement secure, scalable, and intelligent Agentic AI solutions tailored to real business challenges.",
-    buttonLabel: "Talk to Our Experts",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 
@@ -1628,7 +1628,7 @@ const HOSPITALITY_DETAIL: UseCaseDetail = {
     title: "Ready to Build AI Solutions for Hospitality?",
     description:
       "Whether you're modernizing hotel operations, enhancing guest experiences, optimizing revenue, or building AI-powered hospitality platforms, Beno Support helps hospitality businesses implement secure, scalable, and intelligent Agentic AI solutions tailored to real operational challenges.",
-    buttonLabel: "Talk to Our Experts",
+    buttonLabel: "Talk To Our Experts",
   },
 }
 

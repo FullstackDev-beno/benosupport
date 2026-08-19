@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { PageCTAPrimaryButton, PageCTASection } from "@/components/page-cta"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import {
   CASE_STUDY_DETAILS,
   getCaseStudyDetailBySlug,
@@ -111,8 +112,8 @@ export default async function CaseStudyDetailPage({
             {detail.cta.description}
           </p>
           <div className="mt-7">
-            <PageCTAPrimaryButton href="/contact#contact-form">
-              {detail.cta.buttonLabel}
+            <PageCTAPrimaryButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
+              Talk To Our Experts
             </PageCTAPrimaryButton>
           </div>
         </PageCTASection>

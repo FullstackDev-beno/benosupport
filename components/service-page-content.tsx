@@ -20,12 +20,10 @@ import { gsap } from "@/lib/gsap"
 import type { CapabilityCard, ServiceData, ServiceUseCase } from "@/lib/services-data"
 import ServiceHero from "./servicehero"
 import {
-  PageCTAOutlineButton,
   PageCTAPrimaryButton,
   PageCTASection,
 } from "@/components/page-cta"
-import { useProposalModal } from "@/hooks/use-proposal-modal"
-import { getCtaButtonProps, CONTACT_GET_IN_TOUCH_HREF } from "@/lib/proposal-cta"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import { getServiceBreadcrumbLabel, withHome } from "@/lib/breadcrumbs"
 
 const iconMap: Record<string, ComponentType<{ className?: string }>> = {
@@ -72,7 +70,7 @@ const iconMap: Record<string, ComponentType<{ className?: string }>> = {
 
 //           <div className="flex flex-col gap-4 pt-2 sm:flex-row">
 //             <button className="sh-cta rounded-lg bg-[#2d4971] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#3b5b8a] opacity-0">
-//               {hero.ctaButtons?.[0] ?? "Request A Proposal"}
+//               Talk To Our Experts
 //             </button>
 //             <button className="sh-cta rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/5 opacity-0">
 //               {hero.ctaButtons?.[1] ?? "Talk To Our Experts"}
@@ -703,7 +701,6 @@ function ServiceUseCases({ useCases }: { useCases: UseCasesData }) {
 // ---------------------------------------------------------------------------
 
 function ServiceCTASection({ cta }: { cta: NonNullable<ServiceData["cta"]> }) {
-  const { openProposalModal } = useProposalModal()
   const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -732,27 +729,15 @@ function ServiceCTASection({ cta }: { cta: NonNullable<ServiceData["cta"]> }) {
         {cta.content}
       </p>
       <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        {cta.buttons.map((button, index) => {
-          const buttonProps = getCtaButtonProps(button, openProposalModal)
-
-          return index === 0 ? (
-            <PageCTAPrimaryButton key={button} {...buttonProps}>
-              {button}
-            </PageCTAPrimaryButton>
-          ) : (
-            <PageCTAOutlineButton key={button} {...buttonProps}>
-              {button}
-            </PageCTAOutlineButton>
-          )
-        })}
+        <PageCTAPrimaryButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
+          Talk To Our Experts
+        </PageCTAPrimaryButton>
       </div>
     </PageCTASection>
   )
 }
 
 function CTAFallbackSection() {
-  const { openProposalModal } = useProposalModal()
-
   return (
     <PageCTASection>
       <h2 className="type-heading mx-auto max-w-4xl font-bold text-white">
@@ -763,12 +748,9 @@ function CTAFallbackSection() {
         clarity so your service strategy becomes a reliable advantage.
       </p>
       <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <PageCTAPrimaryButton onClick={openProposalModal}>
-          Request a Proposal
+        <PageCTAPrimaryButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
+          Talk To Our Experts
         </PageCTAPrimaryButton>
-        <PageCTAOutlineButton href={CONTACT_GET_IN_TOUCH_HREF}>
-          Talk to Our Experts
-        </PageCTAOutlineButton>
       </div>
     </PageCTASection>
   )
