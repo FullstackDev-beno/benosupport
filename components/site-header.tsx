@@ -11,6 +11,14 @@ import {
   BookOpen,
   LayoutGrid,
   FileText,
+  Code2,
+  Bot,
+  Zap,
+  Cloud,
+  Unlock,
+  Smartphone,
+  ShieldCheck,
+  Users2,
 } from "lucide-react"
 import { SERVICE_NAV_ITEMS } from "@/lib/site-navigation"
 import { WHATSAPP_URL } from "@/lib/social-links"
@@ -29,6 +37,9 @@ const serviceItems = SERVICE_NAV_ITEMS.map((item) => ({
   label: item.label,
   href: item.href,
 }))
+
+// Icons aligned 1:1 with SERVICE_NAV_ITEMS order (lib/site-navigation.ts)
+const serviceIcons = [Code2, Bot, Zap, Cloud, Unlock, Smartphone, ShieldCheck, Users2]
 
 const resourceItems = [
   {
@@ -409,24 +420,26 @@ export function SiteHeader() {
           onMouseEnter={openSvc}
           onMouseLeave={closeSvc}
         >
-          <div className="w-full max-w-[1200px] grid grid-cols-2 gap-x-14 gap-y-1 rounded-[30px] border border-slate-200 bg-white px-12 py-10 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
-            {serviceItems.map((item, i) => (
-              <Link
-                key={item.slug}
-                href={item.href}
-                ref={(el) => { if (el) svcItemRefs.current[i] = el }}
-                onClick={closeSvc}
-                className="group relative flex items-center gap-5 rounded-2xl px-5 py-4 transition-all duration-300 ease-out hover:bg-[#f7faff]"
-              >
-                <div className="h-9 w-[4px] shrink-0 rounded-full bg-slate-200 transition-all duration-300 group-hover:bg-[#072448]" />
-                <span className="text-[15px] font-semibold tracking-[-0.01em] text-black transition-colors duration-300 group-hover:text-[#072448]">
-                  {item.label}
-                </span>
-                <svg className="ml-auto h-4 w-4 shrink-0 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#072448]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              </Link>
-            ))}
+          <div className="w-full max-w-[1232px] grid grid-cols-4 grid-rows-2 grid-flow-col gap-x-4 gap-y-10 rounded-3xl bg-white p-10 shadow-2xl ring-1 ring-black/5">
+            {serviceItems.map((item, i) => {
+              const Icon = serviceIcons[i]
+              return (
+                <Link
+                  key={item.slug}
+                  href={item.href}
+                  ref={(el) => { if (el) svcItemRefs.current[i] = el }}
+                  onClick={closeSvc}
+                  className="group flex items-start gap-4 rounded-xl bg-slate-50/50 p-4 transition-colors duration-300 hover:bg-[#eef2f8]"
+                >
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#F1F5F9] text-[#475569]">
+                    <Icon className="size-5" />
+                  </div>
+                  <span className="text-[13px] font-bold leading-snug text-[#0F172A]">
+                    {item.label}
+                  </span>
+                </Link>
+              )
+            })}
           </div>
         </div>
 
