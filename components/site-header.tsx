@@ -434,7 +434,7 @@ export function SiteHeader() {
                   <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#F1F5F9] text-[#475569]">
                     <Icon className="size-5" />
                   </div>
-                  <span className="text-[13px] font-bold leading-snug text-[#0F172A]">
+                  <span className="text-[16px] font-bold leading-[17.5px] text-[#0F172A]">
                     {item.label}
                   </span>
                 </Link>

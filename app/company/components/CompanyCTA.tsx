@@ -4,14 +4,17 @@ import { useRef, useEffect } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import {
+  PageCTAOutlineButton,
   PageCTAPrimaryButton,
   PageCTASection,
 } from "@/components/page-cta"
+import { useProposalModal } from "@/hooks/use-proposal-modal"
 import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function CompanyCTA() {
+  const { openProposalModal } = useProposalModal()
   const ref = useRef<HTMLElement>(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -51,9 +54,15 @@ export default function CompanyCTA() {
         data-fade
         className="flex flex-wrap items-center justify-center gap-4"
       >
-        <PageCTAPrimaryButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
-          Talk To Our Experts
+        <PageCTAPrimaryButton onClick={openProposalModal}>
+          Request a Proposal
         </PageCTAPrimaryButton>
+        <PageCTAOutlineButton onClick={openProposalModal}>
+          Schedule a Consultation
+        </PageCTAOutlineButton>
+        <PageCTAOutlineButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
+          Talk To Our Experts
+        </PageCTAOutlineButton>
       </div>
     </PageCTASection>
   )

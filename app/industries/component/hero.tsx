@@ -2,12 +2,15 @@
 
 import gsap from 'gsap'
 import React, { useEffect, useRef } from 'react'
+import { useProposalModal } from '@/hooks/use-proposal-modal'
 import { TALK_TO_EXPERT_HREF } from '@/lib/proposal-cta'
+import Link from 'next/link'
 import { prepareHeadingWordAnimation } from '@/lib/prepare-heading-word-animation'
 import { PageBreadcrumb } from '@/components/page-breadcrumb'
 import { withHome } from '@/lib/breadcrumbs'
 
 export default function IndustriesHero() {
+  const { openProposalModal } = useProposalModal()
   const sectionRef = useRef<HTMLElement>(null)
   const h1Ref = useRef<HTMLHeadingElement>(null)
   const subRef = useRef<HTMLParagraphElement>(null)
@@ -25,6 +28,8 @@ export default function IndustriesHero() {
     { value: "Ai-Driven Engineering",   label: "AI-Driven Engineering Solutions" },
     { value: "🔒",   label: "Secure & Scalable Architecture" },
   ],
+  cta1: "Request A Proposal",
+  cta2: "Talk To Our Experts",
 }
 
   useEffect(() => {
@@ -186,15 +191,24 @@ export default function IndustriesHero() {
           ref={btnsRef}
           className="mt-14 flex flex-wrap justify-center gap-5"
         >
-          <a
+          <button
+            type="button"
+            onClick={openProposalModal}
+            style={{ opacity: 0 }}
+            className="rounded-lg bg-[#0A3A73] px-7 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-[#124e96]"
+          >
+            {heroData.cta1}
+          </button>
+
+          <Link
             href={TALK_TO_EXPERT_HREF}
             target="_blank"
             rel="noopener noreferrer"
             style={{ opacity: 0 }}
-            className="rounded-lg bg-[#0A3A73] px-7 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-[#124e96]"
+            className="rounded-lg border border-[#3b67ff]/70 px-7 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-white/5"
           >
-            Talk To Our Experts
-          </a>
+            {heroData.cta2}
+          </Link>
         </div>
       </div>
     </section>

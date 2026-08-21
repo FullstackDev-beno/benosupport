@@ -20,10 +20,12 @@ import { gsap } from "@/lib/gsap"
 import type { CapabilityCard, ServiceData, ServiceUseCase } from "@/lib/services-data"
 import ServiceHero from "./servicehero"
 import {
+  PageCTAOutlineButton,
   PageCTAPrimaryButton,
   PageCTASection,
 } from "@/components/page-cta"
-import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
+import { useProposalModal } from "@/hooks/use-proposal-modal"
+import { getCtaButtonProps, TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import { getServiceBreadcrumbLabel, withHome } from "@/lib/breadcrumbs"
 
 const iconMap: Record<string, ComponentType<{ className?: string }>> = {
@@ -701,6 +703,7 @@ function ServiceUseCases({ useCases }: { useCases: UseCasesData }) {
 // ---------------------------------------------------------------------------
 
 function ServiceCTASection({ cta }: { cta: NonNullable<ServiceData["cta"]> }) {
+  const { openProposalModal } = useProposalModal()
   const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -729,15 +732,27 @@ function ServiceCTASection({ cta }: { cta: NonNullable<ServiceData["cta"]> }) {
         {cta.content}
       </p>
       <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <PageCTAPrimaryButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
-          Talk To Our Experts
-        </PageCTAPrimaryButton>
+        {cta.buttons.map((button, index) => {
+          const buttonProps = getCtaButtonProps(button, openProposalModal)
+
+          return index === 0 ? (
+            <PageCTAPrimaryButton key={button} {...buttonProps}>
+              {button}
+            </PageCTAPrimaryButton>
+          ) : (
+            <PageCTAOutlineButton key={button} {...buttonProps}>
+              {button}
+            </PageCTAOutlineButton>
+          )
+        })}
       </div>
     </PageCTASection>
   )
 }
 
 function CTAFallbackSection() {
+  const { openProposalModal } = useProposalModal()
+
   return (
     <PageCTASection>
       <h2 className="type-heading mx-auto max-w-4xl font-bold text-white">
@@ -748,9 +763,12 @@ function CTAFallbackSection() {
         clarity so your service strategy becomes a reliable advantage.
       </p>
       <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <PageCTAPrimaryButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
-          Talk To Our Experts
+        <PageCTAPrimaryButton onClick={openProposalModal}>
+          Request a Proposal
         </PageCTAPrimaryButton>
+        <PageCTAOutlineButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
+          Talk To Our Experts
+        </PageCTAOutlineButton>
       </div>
     </PageCTASection>
   )

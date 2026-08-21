@@ -22,9 +22,9 @@ export function isProposalCtaText(text: string): boolean {
 export function getCtaButtonProps(
   label: string,
   openProposalModal: () => void
-): { href?: string; onClick?: () => void } {
+): { href?: string; onClick?: () => void; target?: string; rel?: string } {
   if (isTalkToExpertsCtaText(label)) {
-    return { href: TALK_TO_EXPERT_HREF }
+    return { href: TALK_TO_EXPERT_HREF, target: "_blank", rel: "noopener noreferrer" }
   }
   return { onClick: openProposalModal }
 }
