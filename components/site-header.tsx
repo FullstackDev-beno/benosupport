@@ -22,6 +22,9 @@ import {
 } from "lucide-react"
 import { SERVICE_NAV_ITEMS } from "@/lib/site-navigation"
 import { WHATSAPP_URL } from "@/lib/social-links"
+import { client } from "@/sanity/lib/client"
+import { urlFor } from "@/sanity/lib/image"
+import { LATEST_POSTS_QUERY, type PostListItem } from "@/sanity/lib/queries"
 
 import { usePathname } from "next/navigation"
 
@@ -81,6 +84,7 @@ export function SiteHeader() {
   // mobile accordions
   const [mobileServices,   setMobileServices]   = useState(false)
   const [mobileResources,  setMobileResources]  = useState(false)
+  const [latestPosts,      setLatestPosts]      = useState<PostListItem[]>([])
 
   const svcDropdownRef  = useRef<HTMLDivElement>(null)
   const svcChevronRef   = useRef<SVGSVGElement>(null)
@@ -145,6 +149,14 @@ export function SiteHeader() {
       s.async = true
       document.body.appendChild(s)
     }
+  }, [])
+
+  // ── Fetch latest blog posts for Resources dropdown ────────────────────────
+  useEffect(() => {
+    client
+      .fetch<PostListItem[]>(LATEST_POSTS_QUERY)
+      .then((posts) => setLatestPosts(posts ?? []))
+      .catch(() => setLatestPosts([]))
   }, [])
 
   const switchLanguage = (code: string, short: string) => {
@@ -420,7 +432,7 @@ export function SiteHeader() {
           onMouseEnter={openSvc}
           onMouseLeave={closeSvc}
         >
-          <div className="w-full max-w-[1232px] grid grid-cols-4 grid-rows-2 grid-flow-col gap-x-4 gap-y-10 rounded-3xl bg-white p-10 shadow-2xl ring-1 ring-black/5">
+          <div className="w-full max-w-[1100px] grid grid-cols-2 gap-x-16 gap-y-1 rounded-3xl bg-white p-10 shadow-2xl ring-1 ring-black/5">
             {serviceItems.map((item, i) => {
               const Icon = serviceIcons[i]
               return (
@@ -429,14 +441,20 @@ export function SiteHeader() {
                   href={item.href}
                   ref={(el) => { if (el) svcItemRefs.current[i] = el }}
                   onClick={closeSvc}
-                  className="group flex items-start gap-4 rounded-xl bg-slate-50/50 p-4 transition-colors duration-300 hover:bg-[#eef2f8]"
+                  className="group flex items-center gap-4 rounded-2xl px-4 py-5 transition-colors duration-300 hover:bg-[#f7faff]"
                 >
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#F1F5F9] text-[#475569]">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-[#F1F5F9] text-[#475569] transition-colors duration-300 group-hover:bg-[#072448] group-hover:text-white">
                     <Icon className="size-5" />
                   </div>
-                  <span className="text-[16px] font-bold leading-[17.5px] text-[#0F172A]">
+                  <span className="flex-1 text-[16px] font-bold leading-[17.5px] text-[#0F172A]">
                     {item.label}
                   </span>
+                  <svg
+                    className="size-4 shrink-0 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#072448]"
+                    fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"
+                  >
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
                 </Link>
               )
             })}
@@ -451,8 +469,8 @@ export function SiteHeader() {
           onMouseEnter={openRes}
           onMouseLeave={closeRes}
         >
-          <div className="w-full max-w-[900px] rounded-[30px] border border-slate-200 bg-white px-8 py-8 shadow-[0_25px_80px_rgba(15,23,42,.08)]">
-            <div className="grid grid-cols-3 gap-4">
+          <div className="w-full max-w-[1160px] rounded-3xl bg-white p-10 shadow-2xl ring-1 ring-black/5">
+            <div className="grid grid-cols-3 gap-8">
               {resourceItems.map((item, i) => {
                 const Icon = item.icon
                 return (
@@ -461,7 +479,7 @@ export function SiteHeader() {
                     href={item.href}
                     ref={(el) => { if (el) resItemRefs.current[i] = el }}
                     onClick={closeRes}
-                    className="group flex flex-col items-start gap-4 rounded-2xl border border-transparent p-5 transition-all duration-300 hover:border-[#e8eefc] hover:bg-[#f7faff]"
+                    className="group flex flex-col items-start gap-4 rounded-2xl border border-transparent p-1 transition-all duration-300 hover:border-[#e8eefc] hover:bg-[#f7faff]"
                   >
                     <div className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-[#f0f4ff] transition-colors duration-300 group-hover:bg-[#072448]">
                       <Icon className="w-5 h-5 text-[#072448] transition-colors duration-300 group-hover:text-white" />
@@ -478,6 +496,54 @@ export function SiteHeader() {
                 )
               })}
             </div>
+
+            {latestPosts.length > 0 ? (
+              <>
+                <div className="mt-8 border-t border-slate-100 pt-6" />
+                <div className="mb-5 flex items-center justify-between">
+                  <p className="text-[15px] font-semibold text-[#0f172a]">Latest Reads</p>
+                  <Link
+                    href="/blog"
+                    onClick={closeRes}
+                    className="flex items-center gap-1.5 text-[13px] font-semibold text-[#072448] hover:text-[#3b67ff] transition-colors"
+                  >
+                    View all
+                    <svg className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </Link>
+                </div>
+                <div className="grid grid-cols-3 gap-6">
+                  {latestPosts.map((post) => (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      onClick={closeRes}
+                      className="group block"
+                    >
+                      <div className="h-[140px] w-full overflow-hidden rounded-xl bg-slate-100">
+                        {post.mainImage ? (
+                          <img
+                            src={urlFor(post.mainImage).width(600).height(240).fit("crop").url()}
+                            alt={post.title}
+                            className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                          />
+                        ) : null}
+                      </div>
+                      <p className="mt-3 text-[14px] font-semibold leading-snug text-[#0f172a] group-hover:text-[#072448] transition-colors">
+                        {post.title}
+                      </p>
+                      <span className="mt-1 inline-flex items-center gap-1 text-[12px] font-medium text-[#072448]">
+                        Read more
+                        <svg className="size-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path d="M9 18l6-6-6-6" />
+                        </svg>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            ) : null}
           </div>
         </div>
       </header>
