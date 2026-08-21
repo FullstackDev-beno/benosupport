@@ -523,10 +523,10 @@ export function SiteHeader() {
                     >
                       <div className="h-[140px] w-full overflow-hidden rounded-xl bg-slate-100">
                         {post.mainImage ? (
-                          <img
-                            src={urlFor(post.mainImage).width(600).height(240).fit("crop").url()}
+                                                    <img
+                            src={urlFor(post.mainImage).width(600).url()}
                             alt={post.title}
-                            className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                            className="h-full w-full object-fit object-top transition-transform duration-300 group-hover:scale-105"
                           />
                         ) : null}
                       </div>
