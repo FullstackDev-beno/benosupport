@@ -57,9 +57,6 @@ export default function CompanyCTA() {
         <PageCTAPrimaryButton onClick={openProposalModal}>
           Request a Proposal
         </PageCTAPrimaryButton>
-        <PageCTAOutlineButton onClick={openProposalModal}>
-          Schedule a Consultation
-        </PageCTAOutlineButton>
         <PageCTAOutlineButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
           Talk To Our Experts
         </PageCTAOutlineButton>

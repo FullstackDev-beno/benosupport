@@ -372,7 +372,7 @@ export const servicesData: Record<string, ServiceData> = {
       tagline2: "Proactive Cyber Resilience. ",
       description:
         "Beno Support helps startups, SMBs, and enterprises secure applications, cloud infrastructure, AI systems, and enterprise environments through proactive cybersecurity and threat intelligence services.",
-     ctaButtons: ["Request Security Assessment", "Talk To Our Experts"],
+     ctaButtons: ["Request a Proposal", "Talk To Our Experts"],
     },
     intro: {
       sectionLabel: "Intro",
@@ -1184,7 +1184,7 @@ export const servicesData: Record<string, ServiceData> = {
       tagline: "Turn Business Vision into a Scalable Digital Enterprise",
       description:
         " Helping enterprises accelerate innovation, improve operational efficiency, and maximize technology investments with a strategy-first approach.",
-      ctaButtons: ["Talk To Our Experts"],
+      ctaButtons: ["Request a Proposal", "Talk To Our Experts"],
     },
     intro: {
       sectionLabel: "Intro",
