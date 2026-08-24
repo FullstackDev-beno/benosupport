@@ -224,8 +224,12 @@ export function SiteHeader() {
   const closeRes = () => closeDrop(resIsOpenRef, resDropdownRef, resChevronRef, setIsResourcesOpen)
 
   // ── Style helpers ─────────────────────────────────────────────────────────
-  const textCls      = isScrolled ? "text-[#0d1e3c]" : "text-white/90"
-  const hoverCls     = isScrolled ? "hover:text-[#3b67ff]" : "hover:text-white"
+  const isDetailPage =
+    (pathname.startsWith("/blog/") && pathname !== "/blog/") ||
+    (pathname.startsWith("/case-studies/") && pathname !== "/case-studies/")
+  const isSolid       = isScrolled || isDetailPage
+  const textCls      = isSolid ? "text-[#0d1e3c]" : "text-white/90"
+  const hoverCls     = isSolid ? "hover:text-[#3b67ff]" : "hover:text-white"
 
   const activeSvcCls =
   pathname.startsWith("/services") || isServicesOpen
@@ -252,7 +256,7 @@ export function SiteHeader() {
 
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+          isSolid
             ? "bg-white/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.07)]"
             : "bg-transparent"
         }`}
@@ -273,7 +277,7 @@ export function SiteHeader() {
             >
               <div ref={logoRef}>
                 <img
-                  src={isScrolled ? "/assets/logo.svg" : "/assets/whitelogo.svg"}
+                  src={isSolid ? "/assets/logo.svg" : "/assets/whitelogo.svg"}
                   alt="Beno Support"
                   className="h-9 sm:h-10 w-auto block"
                   style={{ imageRendering: "crisp-edges" }}
@@ -354,7 +358,7 @@ export function SiteHeader() {
                 <button
                   onClick={() => setIsLangOpen((v) => !v)}
                   className={`flex items-center gap-1.5 text-[13px] font-semibold px-3 py-1.5 rounded-lg transition-all duration-200 ${
-                    isScrolled
+                    isSolid
                       ? "text-[#0d1e3c] hover:bg-[#f0f4ff] hover:text-[#072448]"
                       : "text-white/90 hover:text-white hover:bg-white/10"
                   }`}
@@ -391,13 +395,14 @@ export function SiteHeader() {
 
               {/* CTA button */}
               <a
+              
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`
                   px-6 py-2.5 text-[15px] font-semibold rounded-xl
                   transition-colors duration-300
-                  ${isScrolled
+                  ${isSolid
                     ? "bg-[#072448] text-white hover:bg-[#0a2d5c]"
                     : "border border-white/40 text-white hover:bg-white/10"
                   }
