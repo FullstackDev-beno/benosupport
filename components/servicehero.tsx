@@ -164,6 +164,8 @@ function ServiceHero({
             {primaryCtaProps.href ? (
               <Link
                 href={primaryCtaProps.href}
+                target={primaryCtaProps.target}
+                rel={primaryCtaProps.rel}
                 className="rounded-lg bg-[#0A3A73] px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-[#124e96]"
               >
                 {primaryCtaLabel}
@@ -180,6 +182,8 @@ function ServiceHero({
             {secondaryCtaProps.href ? (
               <Link
                 href={secondaryCtaProps.href}
+                target={secondaryCtaProps.target}
+                rel={secondaryCtaProps.rel}
                 className="rounded-lg border border-white/30 px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-white/10"
               >
                 {secondaryCtaLabel}

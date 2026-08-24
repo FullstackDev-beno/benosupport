@@ -25,7 +25,7 @@ import {
   PageCTASection,
 } from "@/components/page-cta"
 import { useProposalModal } from "@/hooks/use-proposal-modal"
-import { getCtaButtonProps, CONTACT_GET_IN_TOUCH_HREF } from "@/lib/proposal-cta"
+import { getCtaButtonProps, TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import { getServiceBreadcrumbLabel, withHome } from "@/lib/breadcrumbs"
 
 const iconMap: Record<string, ComponentType<{ className?: string }>> = {
@@ -72,7 +72,7 @@ const iconMap: Record<string, ComponentType<{ className?: string }>> = {
 
 //           <div className="flex flex-col gap-4 pt-2 sm:flex-row">
 //             <button className="sh-cta rounded-lg bg-[#2d4971] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#3b5b8a] opacity-0">
-//               {hero.ctaButtons?.[0] ?? "Request A Proposal"}
+//               Talk To Our Experts
 //             </button>
 //             <button className="sh-cta rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/5 opacity-0">
 //               {hero.ctaButtons?.[1] ?? "Talk To Our Experts"}
@@ -766,8 +766,8 @@ function CTAFallbackSection() {
         <PageCTAPrimaryButton onClick={openProposalModal}>
           Request a Proposal
         </PageCTAPrimaryButton>
-        <PageCTAOutlineButton href={CONTACT_GET_IN_TOUCH_HREF}>
-          Talk to Our Experts
+        <PageCTAOutlineButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
+          Talk To Our Experts
         </PageCTAOutlineButton>
       </div>
     </PageCTASection>

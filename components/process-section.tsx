@@ -133,6 +133,9 @@ export function ProcessSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
+  const stepNavRef = useRef<HTMLElement>(null)
+  const stepLineRef = useRef<HTMLDivElement>(null)
+  const stepIconRefs = useRef<(HTMLSpanElement | null)[]>([])
 
   const active = phases[activeIndex]
   const isLast = activeIndex === phases.length - 1
@@ -166,6 +169,30 @@ export function ProcessSection() {
     )
   }, [activeIndex])
 
+  useEffect(() => {
+    function updateStepLine() {
+      const nav = stepNavRef.current
+      const line = stepLineRef.current
+      const firstIcon = stepIconRefs.current[0]
+      const lastIcon = stepIconRefs.current[phases.length - 1]
+      if (!nav || !line || !firstIcon || !lastIcon) return
+
+      const navRect = nav.getBoundingClientRect()
+      const firstRect = firstIcon.getBoundingClientRect()
+      const lastRect = lastIcon.getBoundingClientRect()
+
+      const top = firstRect.top + firstRect.height / 2 - navRect.top
+      const bottom = lastRect.top + lastRect.height / 2 - navRect.top
+
+      line.style.top = `${top}px`
+      line.style.height = `${Math.max(bottom - top, 0)}px`
+    }
+
+    updateStepLine()
+    window.addEventListener("resize", updateStepLine)
+    return () => window.removeEventListener("resize", updateStepLine)
+  }, [activeIndex])
+
   function goToNextPhase() {
     setActiveIndex((index) => (index + 1) % phases.length)
   }
@@ -193,11 +220,13 @@ export function ProcessSection() {
         <div className="grid items-stretch gap-8 lg:grid-cols-[minmax(220px,0.32fr)_1fr] lg:gap-10 xl:gap-14">
           {/* Vertical stepper — on desktop, stretches to match detail card height */}
           <nav
+            ref={stepNavRef}
             aria-label="Delivery framework phases"
             className="relative lg:flex lg:h-full lg:min-h-0"
           >
             <div
-              className="absolute bottom-3 left-[1.125rem] top-3 w-px bg-[#d7e0ee] lg:bottom-5 lg:top-5"
+              ref={stepLineRef}
+              className="absolute left-[1.125rem] w-px bg-[#d7e0ee]"
               aria-hidden
             />
             <ol className="relative space-y-1 lg:flex lg:h-full lg:w-full lg:flex-col lg:justify-between lg:space-y-0 lg:py-1">
@@ -217,15 +246,23 @@ export function ProcessSection() {
                         isActive ? "" : "hover:bg-white/60"
                       }`}
                     >
-                      <span
+
+
+
+
+                     <span
+                        ref={(el) => { stepIconRefs.current[index] = el }}
                         className={`relative z-10 flex size-9 shrink-0 items-center justify-center rounded-full text-[12px] font-bold transition-colors ${
                           isActive
-                            ? "bg-[#072448] text-white shadow-[0_8px_20px_rgba(7,36,72,0.28)]"
+                            ? "bg-[#072448] text-white shadow-[0_8px_16px_-4px_rgba(7,36,72,0.35)]"
                             : "bg-[#e8eef8] text-[#64748b] group-hover:bg-[#dce6f5]"
                         }`}
                       >
                         {number}
                       </span>
+
+
+
                       <span className="min-w-0 pt-1">
                         <span
                           className={`block text-[15px] leading-snug transition-colors ${

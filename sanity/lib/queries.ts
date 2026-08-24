@@ -26,6 +26,14 @@ export const ALL_POSTS_QUERY = `*[_type == "post" && defined(slug.current)] | or
   mainImage
 }`
 
+export const LATEST_POSTS_QUERY = `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) [0...3] {
+  title,
+  "slug": slug.current,
+  excerpt,
+  publishedAt,
+  mainImage
+}`
+
 export const SINGLE_POST_QUERY = `*[_type == "post" && slug.current == $slug][0] {
   title,
   "slug": slug.current,

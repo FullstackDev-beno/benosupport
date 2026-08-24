@@ -85,7 +85,7 @@ export const servicesData: Record<string, ServiceData> = {
       tagline3: "Built for Innovation.",
       description:
         "We engineer resilient SaaS platforms, cloud-native architectures, and enterprise applications that power modern business growth.",
-      ctaButtons: ["Request a Proposal", "Talk to Our Experts"],
+      ctaButtons: ["Request a Proposal", "Talk To Our Experts"],
     },
     intro: {
       sectionLabel: "Intro",
@@ -325,9 +325,9 @@ export const servicesData: Record<string, ServiceData> = {
       content:
         "Partner with Beno Support to modernize applications, develop scalable software platforms, and accelerate digital innovation with engineering-led solutions.",
       buttons: [
-        "Request a Proposal",
-        "Talk to Our Experts",
-      ],
+  "Request a Proposal",
+  "Talk To Our Experts",
+],
     },
     faq: [
       {
@@ -372,7 +372,7 @@ export const servicesData: Record<string, ServiceData> = {
       tagline2: "Proactive Cyber Resilience. ",
       description:
         "Beno Support helps startups, SMBs, and enterprises secure applications, cloud infrastructure, AI systems, and enterprise environments through proactive cybersecurity and threat intelligence services.",
-      ctaButtons: ["Request Security Assessment", "Talk to Security Experts"],
+     ctaButtons: ["Request a Proposal", "Talk To Our Experts"],
     },
     intro: {
       sectionLabel: "Intro",
@@ -605,9 +605,9 @@ export const servicesData: Record<string, ServiceData> = {
       content:
         "Partner with Beno Support to secure digital infrastructure, protect enterprise systems, and improve cybersecurity readiness with proactive threat intelligence solutions.",
       buttons: [
-        "Request a Proposal",
-        "Talk to Our Experts",
-      ],
+  "Request a Proposal",
+  "Talk To Our Experts",
+],
     },
     faq: [
       {
@@ -652,7 +652,7 @@ export const servicesData: Record<string, ServiceData> = {
       tagline2: "Smarter Business Operations ",
       description:
         "Beno Support helps startups, SMBs, and enterprises implement AI agents, intelligent workflows, and automation systems that improve operational efficiency, customer experience, and decision-making",
-      ctaButtons: ["Request a Proposal", "Talk to Our Experts"],
+      ctaButtons: ["Request a Proposal", "Talk To Our Experts"],
     },
     intro: {
       sectionLabel: "Intro",
@@ -863,9 +863,9 @@ export const servicesData: Record<string, ServiceData> = {
       content:
         "Partner with Beno Support to deploy AI agents, automate workflows, and build enterprise-ready AI ecosystems that accelerate operational efficiency.",
       buttons: [
-        "Request a Proposal",
-        "Talk to Our Experts",
-      ],
+  "Request a Proposal",
+  "Talk To Our Experts",
+],
     },
     faq: [
       {
@@ -1137,9 +1137,9 @@ export const servicesData: Record<string, ServiceData> = {
       content:
         "Partner with Beno Support to create scalable digital products, optimize customer journeys, and improve user engagement through modern product engineering solutions.",
       buttons: [
-        "Request a Proposal",
-        "Talk to Our Experts",
-      ],
+  "Request a Proposal",
+  "Talk To Our Experts",
+],
     },
     faq: [
       {
@@ -1184,7 +1184,7 @@ export const servicesData: Record<string, ServiceData> = {
       tagline: "Turn Business Vision into a Scalable Digital Enterprise",
       description:
         " Helping enterprises accelerate innovation, improve operational efficiency, and maximize technology investments with a strategy-first approach.",
-      ctaButtons: ["Request a Proposal", "Talk to Our Experts"],
+      ctaButtons: ["Request a Proposal", "Talk To Our Experts"],
     },
     intro: {
       sectionLabel: "Intro",
@@ -1397,9 +1397,9 @@ export const servicesData: Record<string, ServiceData> = {
       content:
         "Partner with Beno Support to build scalable technology strategies, modernize infrastructure, and accelerate digital transformation initiatives.",
       buttons: [
-        "Request a Proposal",
-        "Talk to Our Experts",
-      ],
+  "Request a Proposal",
+  "Talk To Our Experts",
+],
     },
     faq: [
       {
@@ -1889,9 +1889,9 @@ export const servicesData: Record<string, ServiceData> = {
       content:
         "Partner with Beno Support to optimize cloud operations, automate infrastructure, and accelerate cloud-native transformation.",
       buttons: [
-        "Request a Proposal",
-        "Talk to Our Experts",
-      ],
+  "Request a Proposal",
+  "Talk To Our Experts",
+],
     },
     faq: [
       {
@@ -2177,9 +2177,9 @@ export const servicesData: Record<string, ServiceData> = {
       content:
         "Partner with Beno Support to modernize HR systems, automate workforce processes, and build intelligent workforce technology ecosystems that improve operational efficiency.",
       buttons: [
-        "Request a Proposal",
-        "Talk to Our Experts",
-      ],
+  "Request a Proposal",
+  "Talk To Our Experts",
+],
     },
 
     faq: [

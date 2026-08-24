@@ -21,6 +21,8 @@ export const SOCIAL_LINKS = [
   },
 ] as const
 
+export const WHATSAPP_URL = "https://wa.me/918929884560"
+
 export const FOOTER_CONTACT_LINKS = [
   {
     href: "https://www.benosupport.com",

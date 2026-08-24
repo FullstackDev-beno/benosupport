@@ -3,9 +3,9 @@
 import gsap from 'gsap'
 import React, { useEffect, useRef } from 'react'
 import { useProposalModal } from '@/hooks/use-proposal-modal'
-import { CONTACT_GET_IN_TOUCH_HREF } from '@/lib/proposal-cta'
-import { prepareHeadingWordAnimation } from '@/lib/prepare-heading-word-animation'
+import { TALK_TO_EXPERT_HREF } from '@/lib/proposal-cta'
 import Link from 'next/link'
+import { prepareHeadingWordAnimation } from '@/lib/prepare-heading-word-animation'
 import { PageBreadcrumb } from '@/components/page-breadcrumb'
 import { withHome } from '@/lib/breadcrumbs'
 
@@ -201,7 +201,9 @@ export default function IndustriesHero() {
           </button>
 
           <Link
-            href={CONTACT_GET_IN_TOUCH_HREF}
+            href={TALK_TO_EXPERT_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{ opacity: 0 }}
             className="rounded-lg border border-[#3b67ff]/70 px-7 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-white/5"
           >

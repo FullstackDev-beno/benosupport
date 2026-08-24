@@ -28,7 +28,7 @@ import {
   type UseCaseCard,
   type UseCaseCardIcon,
 } from "@/lib/use-cases-data"
-import { CONTACT_GET_IN_TOUCH_HREF } from "@/lib/proposal-cta"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 
 const USE_CASE_ICONS: Record<UseCaseCardIcon, LucideIcon> = {
   "shield-alert": ShieldAlert,
@@ -92,10 +92,12 @@ function UseCaseCardItem({ useCase }: { useCase: UseCaseCard }) {
 
       <div className="mt-auto pt-6">
         <Link
-          href={CONTACT_GET_IN_TOUCH_HREF}
+          href={TALK_TO_EXPERT_HREF}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#0f62fe] transition-colors hover:text-[#072448]"
         >
-          Talk To An Expert
+          Talk To Our Experts
           <span aria-hidden>→</span>
         </Link>
       </div>

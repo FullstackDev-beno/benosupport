@@ -4,9 +4,8 @@ import { useEffect, useRef } from "react"
 import { FileText, BadgeCheck, UserRoundCheck } from "lucide-react"
 import { gsap } from "@/lib/gsap"
 import { PartnerStrip } from "./partnerStrip"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import { useProposalModal } from "@/hooks/use-proposal-modal"
-import { CONTACT_GET_IN_TOUCH_HREF } from "@/lib/proposal-cta"
-import Link from "next/link"
 
 // Pre-defined headline lines for clean stagger reveal (balanced length per line)
 const HEADLINE_LINES = [
@@ -16,7 +15,7 @@ const HEADLINE_LINES = [
 ]
 
 export function HeroSection() {
-  const { openProposalModal } = useProposalModal()
+   const { openProposalModal } = useProposalModal()
   const heroRef     = useRef<HTMLDivElement>(null)
   const videoRef    = useRef<HTMLVideoElement>(null)
   const overlayRef  = useRef<HTMLDivElement>(null)
@@ -235,21 +234,24 @@ export function HeroSection() {
             </p>
 
             {/* CTA */}
-            <div ref={ctaRef} className="mt-8 flex gap-4 will-change-transform">
-              <button
-                type="button"
-                onClick={openProposalModal}
-                className="h-[50px] px-8 rounded-xl bg-[#0A3A73] text-white text-[15px] font-semibold hover:bg-blue-900 transition-colors active:scale-[0.98]"
-              >
-               Request a Proposal
-              </button>
-              <Link
-                href={CONTACT_GET_IN_TOUCH_HREF}
-                className="h-[50px] px-8 rounded-xl border-[0.5px] border-white text-white text-[15px] font-semibold hover:bg-blue-900 transition-colors active:scale-[0.98] inline-flex items-center justify-center"
-              >
-                Talk to an Expert
-              </Link>
-            </div>
+<div ref={ctaRef} className="mt-8 flex gap-4 will-change-transform">
+  <button
+    type="button"
+    onClick={openProposalModal}
+    className="h-[50px] px-8 rounded-xl bg-[#0A3A73] text-white text-[15px] font-semibold hover:bg-blue-900 transition-colors active:scale-[0.98] inline-flex items-center justify-center"
+  >
+    Request a Proposal
+  </button>
+
+  <a
+    href={TALK_TO_EXPERT_HREF}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="h-[50px] px-8 rounded-xl border border-white/30 text-white text-[15px] font-semibold hover:bg-white/10 transition-colors active:scale-[0.98] inline-flex items-center justify-center"
+  >
+    Talk To Our Experts
+  </a>
+</div>
           </div>
 
           {/* ─── RIGHT — compact stat cards ─── */}

@@ -23,6 +23,7 @@ import {
   PageCTASection,
 } from "@/components/page-cta"
 import { useProposalModal } from "@/hooks/use-proposal-modal"
+import { TALK_TO_EXPERT_HREF } from "@/lib/proposal-cta"
 import Image from "next/image"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -1111,8 +1112,8 @@ function IndustriesCTA() {
         <PageCTAPrimaryButton onClick={openProposalModal}>
           Request a Proposal
         </PageCTAPrimaryButton>
-        <PageCTAOutlineButton onClick={openProposalModal}>
-          Schedule a Consultation
+        <PageCTAOutlineButton href={TALK_TO_EXPERT_HREF} target="_blank" rel="noopener noreferrer">
+          Talk To Our Experts
         </PageCTAOutlineButton>
       </div>
     </PageCTASection>
