@@ -521,7 +521,7 @@ export function SiteHeader() {
                       onClick={closeRes}
                       className="group block"
                     >
-                      <div className="h-[140px] w-full overflow-hidden rounded-xl bg-slate-100">
+                      <div className="h-[190px] w-full overflow-hidden rounded-xl bg-slate-100">
                         {post.mainImage ? (
                                                     <img
                             src={urlFor(post.mainImage).width(600).url()}
