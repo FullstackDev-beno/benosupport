@@ -1,13 +1,231 @@
 import type {StructureResolver} from 'sanity/structure'
+import {SERVICE_NAV_ITEMS} from '@/lib/site-navigation'
+import {CASE_STUDY_LISTINGS} from '@/lib/case-studies-data'
+import {USE_CASE_LISTINGS} from '@/lib/use-cases-data'
+
+// List of document type names that live inside the "Home" folder below.
+// When you add a new homepage section schema later, add its `name` here too.
+const HOMEPAGE_SECTION_TYPES = [
+  'homeHero',
+  'whyChooseSection',
+  'processSection',
+  'faqSection',
+  'ctaSection',
+]
+
+// Document types organized into the "Services" folder below.
+const SERVICES_TYPES = ['service']
+
+// Document types organized into the "Case Studies" folder below.
+const CASE_STUDIES_TYPES = ['caseStudy']
+
+// Document types organized into the "Use Cases" folder below.
+const USE_CASES_TYPES = ['useCase']
+
+// Document types organized into the "Legal Pages" folder below.
+const LEGAL_PAGES_TYPES = ['legalPage']
+
+// Standalone singleton pages (one document each) shown as their own top-level entry.
+const STANDALONE_PAGE_TYPES = ['industriesPage', 'companyPage', 'siteSettings']
+
+// The 2 legal pages, in the order they appear in the site footer.
+const LEGAL_PAGE_ORDER = [
+  { pageKey: 'privacy-policy', label: 'Privacy Policy', number: 1 },
+  { pageKey: 'terms', label: 'Terms & Conditions', number: 2 },
+]
+
+// The 8 services, in the same order they appear in the site's navigation —
+// so the numbering in Studio always matches the numbering on the live site.
+const SERVICE_ORDER = SERVICE_NAV_ITEMS.map((item, index) => ({
+  slug: item.href.replace('/services/', ''),
+  label: item.label,
+  number: index + 1,
+}))
+
+// The case studies, numbered in the same order they're defined in
+// lib/case-studies-data.ts (which matches the listing page order).
+const CASE_STUDY_ORDER = CASE_STUDY_LISTINGS.map((item, index) => ({
+  slug: item.slug,
+  label: item.title,
+  number: index + 1,
+}))
+
+// The use cases, numbered in the same order they're defined in
+// lib/use-cases-data.ts (which matches the listing page order).
+const USE_CASE_ORDER = USE_CASE_LISTINGS.map((item, index) => ({
+  slug: item.slug,
+  label: item.title,
+  number: index + 1,
+}))
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
+//
+// This sidebar mirrors the site's own header navigation, so editors can
+// find things the same way a visitor would:
+//   Home
+//   Services
+//   Industries
+//   Company
+//   Resources
+//     Insights (Posts)
+//     Use Cases
+//     Case Studies
+// Legal Pages and Site Settings aren't in the header nav, so they sit
+// below Resources as their own entries.
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Blog')
+    .title('Content')
     .items([
-      S.documentTypeListItem('post').title('Posts'),
+      // ── Home — every editable homepage section lives inside here ──
+      S.listItem()
+        .title('Home')
+        .child(
+          S.list()
+            .title('Home')
+            .items([
+              S.documentTypeListItem('homeHero').title('Hero'),
+              S.documentTypeListItem('whyChooseSection').title('Why Choose Us'),
+              S.documentTypeListItem('processSection').title('Process Section'),
+              S.documentTypeListItem('faqSection').title('FAQ'),
+              S.documentTypeListItem('ctaSection').title('Bottom CTA'),
+            ]),
+        ),
+
+      // ── Services folder — numbered, in the same order as the site's nav.
+      // Clicking a service opens a small filtered list (usually showing just
+      // its one document) — click that document to open it. This is one
+      // extra click compared to opening directly, but it's the reliable,
+      // officially-documented pattern (no async lookups that can fail).
+      S.listItem()
+        .title('Services')
+        .child(
+          S.list()
+            .title('Services')
+            .items(
+              SERVICE_ORDER.map((entry) =>
+                S.listItem()
+                  .title(`${entry.number}. ${entry.label}`)
+                  .child(
+                    S.documentList()
+                      .title(entry.label)
+                      .filter('_type == "service" && slug.current == $slug')
+                      .params({ slug: entry.slug })
+                      .apiVersion('2024-01-01'),
+                  ),
+              ),
+            ),
+        ),
+
+      // ── Industries — a single document. "Industries We Serve" and
+      // "Technology We Use" sections are intentionally NOT editable here —
+      // they stay exactly as they are on the site.
+      S.documentTypeListItem('industriesPage').title('Industries'),
+
+      // ── Company — a single document. "Our Story", "Our Journey",
+      // "Leadership Team", and "Global Presence" are intentionally NOT
+      // editable here — they stay exactly as they are on the site.
+      S.documentTypeListItem('companyPage').title('Company'),
+
       S.divider(),
-      ...S.documentTypeListItems().filter(
-        (item) => item.getId() && item.getId() !== 'post',
-      ),
+
+      // ── Resources folder — mirrors the site header's Resources
+      // dropdown: Insights (Posts), Use Cases, Case Studies.
+      S.listItem()
+        .title('Resources')
+        .child(
+          S.list()
+            .title('Resources')
+            .items([
+              // Insights (Posts)
+              S.documentTypeListItem('post').title('Insights'),
+
+              // Use Cases — numbered, same order as the listing page.
+              S.listItem()
+                .title('Use Cases')
+                .child(
+                  S.list()
+                    .title('Use Cases')
+                    .items(
+                      USE_CASE_ORDER.map((entry) =>
+                        S.listItem()
+                          .title(`${entry.number}. ${entry.label}`)
+                          .child(
+                            S.documentList()
+                              .title(entry.label)
+                              .filter('_type == "useCase" && slug.current == $slug')
+                              .params({ slug: entry.slug })
+                              .apiVersion('2024-01-01'),
+                          ),
+                      ),
+                    ),
+                ),
+
+              // Case Studies — numbered, same order as the listing page.
+              S.listItem()
+                .title('Case Studies')
+                .child(
+                  S.list()
+                    .title('Case Studies')
+                    .items(
+                      CASE_STUDY_ORDER.map((entry) =>
+                        S.listItem()
+                          .title(`${entry.number}. ${entry.label}`)
+                          .child(
+                            S.documentList()
+                              .title(entry.label)
+                              .filter('_type == "caseStudy" && slug.current == $slug')
+                              .params({ slug: entry.slug })
+                              .apiVersion('2024-01-01'),
+                          ),
+                      ),
+                    ),
+                ),
+            ]),
+        ),
+
+      S.divider(),
+
+      // ── Legal Pages folder — Privacy Policy and Terms & Conditions.
+      // Not part of the header nav, so it sits below Resources.
+      S.listItem()
+        .title('Legal Pages')
+        .child(
+          S.list()
+            .title('Legal Pages')
+            .items(
+              LEGAL_PAGE_ORDER.map((entry) =>
+                S.listItem()
+                  .title(`${entry.number}. ${entry.label}`)
+                  .child(
+                    S.documentList()
+                      .title(entry.label)
+                      .filter('_type == "legalPage" && pageKey == $pageKey')
+                      .params({ pageKey: entry.pageKey })
+                      .apiVersion('2024-01-01'),
+                  ),
+              ),
+            ),
+        ),
+
+      // ── Site Settings — a single document. Header, Footer, Contact page
+      // info, and Social Media links. Not part of the header nav either.
+      S.documentTypeListItem('siteSettings').title('Site Settings'),
+
+      S.divider(),
+
+      // Anything else (future document types not yet organized into a folder)
+      // still shows up here automatically, so nothing ever goes missing.
+      ...S.documentTypeListItems().filter((item) => {
+        const id = item.getId()
+        return (
+          id &&
+          id !== 'post' &&
+          !HOMEPAGE_SECTION_TYPES.includes(id) &&
+          !SERVICES_TYPES.includes(id) &&
+          !CASE_STUDIES_TYPES.includes(id) &&
+          !USE_CASES_TYPES.includes(id) &&
+          !LEGAL_PAGES_TYPES.includes(id) &&
+          !STANDALONE_PAGE_TYPES.includes(id)
+        )
+      }),
     ])
